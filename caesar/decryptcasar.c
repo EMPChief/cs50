@@ -44,8 +44,7 @@ int main(int argc, string argv[])
         // If the character is a lowercase letter
         if (ciphertext[i] >= 'a' && ciphertext[i] <= 'z')
         {
-            // Apply Caesar cipher formula for lowercase letters
-            // Subtract key instead of adding it
+            // Apply Caesar cipher formula for lowercase letters 
             ciphertext[i] = ((ciphertext[i] - 'a' - key + 26) % 26) + 'a';
         }
         // If the character is an uppercase letter
