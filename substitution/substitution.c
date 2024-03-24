@@ -9,7 +9,7 @@ char encryptChar(char c, string key);
 int main(int argc, string argv[])
 {
     // Check if key gotten from command line is valid
-    if (argc != 2)
+    if (argc != 2) 
     {
         printf("Usage: %s key\n", argv[0]);
         return 1;
