@@ -1,5 +1,9 @@
 
 
+--------------
+clang -fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow LinerSearchNumber.c -lcrypt -lcs50 -lm -o LinerSearchNumber
+--------------
+clang -fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow linearSearchChar.c -lcrypt -lcs50 -lm -o linearSearchChar
 ----------------
 clang -fsanitize=integer -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wshadow decryptsubstitution.c -lcrypt -lcs50 -lm -o decryptsubstitution
 ----------------
