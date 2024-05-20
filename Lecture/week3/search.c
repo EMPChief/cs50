@@ -1,18 +1,20 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
-    int numbers[5] = {10, 20, 30, 40, 50};
-    int number = get_int("Enter a number: ");
+    string stringlist[] = {"apple", "banana", "cherry", "date", "elderberry"};
+
+    string search = get_string("Search: ");
     for (int i = 0; i < 5; i++)
     {
-        if (numbers[i] == number)
+        if (strcmp(stringlist[i], search) == 0)
         {
-            printf("Number %d found in the array!\n", number);
+            printf("Found!\n");
             return 0;
         }
     }
-    printf("Number %d not found in the array.\n", number);
+    printf("Not found.\n");
     return 1;
 }

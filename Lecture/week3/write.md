@@ -58,7 +58,7 @@ Summary
 * O(n!): Factorial time, extremely inefficient, typically an upper bound for exhaustive search algorithms.
 
 
-## Example Code: Linear Search
+## Example Code: Linear Search Algorithm with int array
 ```c
 #include <cs50.h>
 #include <stdio.h>
@@ -76,6 +76,30 @@ int main(void)
         }
     }
     printf("Number %d not found in the array.\n", number);
+    return 1;
+}
+```
+### Example Code: Linear Search Algorithm with string array
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string stringlist[] = {"apple", "banana", "cherry", "date", "elderberry"};
+
+    string search = get_string("Search: ");
+    for (int i = 0; i < 5; i++)
+    {
+        // strcmp() returns 0 if the strings are equal and -1 if the first string is less than the second. 
+        if (strcmp(stringlist[i], search) == 0)
+        {
+            printf("Found!\n");
+            return 0;
+        }
+    }
+    printf("Not found.\n");
     return 1;
 }
 ```
