@@ -2,7 +2,7 @@ Time Complexity - Big O Notation
 ====================================================
 
 Time complexity is a measure of the amount of time an algorithm takes to process as a function of the length of the input. Big O notation is used to classify algorithms based on how their run time or space requirements grow as the input size grows.
-Ω is used to indicate an upper bound. O is used to indicate an lower bound.
+Ω is used to indicate an upper bound. O is used to indicate an lower bound. Ω is used to indicate an upper bound, and O is used to indicate an lower bound.
 
 ### Constant Time Complexity - O(1) - Ω(1)
 
@@ -57,3 +57,25 @@ Summary
 * O(n^3): Cubic time, even less efficient, seen in more complex operations.
 * O(n!): Factorial time, extremely inefficient, typically an upper bound for exhaustive search algorithms.
 
+
+## Example Code: Linear Search
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+    int number = get_int("Enter a number: ");
+    for (int i = 0; i < 5; i++)
+    {
+        if (numbers[i] == number)
+        {
+            printf("Number %d found in the array!\n", number);
+            return 0;
+        }
+    }
+    printf("Number %d not found in the array.\n", number);
+    return 1;
+}
+```
