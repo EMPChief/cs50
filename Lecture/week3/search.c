@@ -2,19 +2,40 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct
+{
+    string name;
+    string number;
+} phonebook;
+
 int main(void)
 {
-    string stringlist[] = {"apple", "banana", "cherry", "date", "elderberry"};
+    // Phonebook
+    phonebook phonebookname[4];
 
-    string search = get_string("Search: ");
-    for (int i = 0; i < 5; i++)
+    phonebookname[0].name = "Alice";
+    phonebookname[0].number = "123-4567";
+    phonebookname[1].name = "Bob";
+    phonebookname[1].number = "234-5678";
+    phonebookname[2].name = "Charlie";
+    phonebookname[2].number = "345-6789";
+    phonebookname[3].name = "David";
+    phonebookname[3].number = "456-7890";
+
+    // Get user's input for name
+    string name = get_string("Name: ");
+
+    // Search for the name in the phonebook
+    for (int i = 0; i < 4; i++)
     {
-        if (strcmp(stringlist[i], search) == 0)
+        if (strcmp(name, phonebookname[i].name) == 0)
         {
-            printf("Found!\n");
+            printf("Number: %s\n", phonebookname[i].number);
             return 0;
         }
     }
-    printf("Not found.\n");
+
+    // If the name was not found
+    printf("No such person.\n");
     return 1;
 }
