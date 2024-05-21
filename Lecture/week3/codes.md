@@ -1,3 +1,5 @@
+
+
 ## Example Code: Linear Search Algorithm with int array
 ```c
 #include <cs50.h>
