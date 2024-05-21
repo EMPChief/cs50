@@ -156,7 +156,7 @@ void printArray(int arr[], int size) {
 
 # Sorting
 ### if want to sort unsorted number 9 3 7 6 1 4 8 2 5 to get 1 2 3 4 5 6 7 8 9 i can use these type:
-### Bubble Sort: (O(n^2))
+### Bubble Sort: (O(n))
 - Repeatedly swap adjacent elements if they are in the wrong order.
 - Example: Compare 9 and 3, swap. Compare 9 and 7, swap. Continue until the end. Repeat until the array is sorted.
 ### Insertion Sort: (O(n^2))
@@ -199,4 +199,37 @@ repeat n-1 times
     for i from 0 to n-2
         if numbers[i] and numbers[i+1] are in wrong order
             swap numbers[i] and numbers[i+1]
+```
+### Example Code: bubble sort
+```c
+repeat n-1 times
+    for i from 0 to n-2
+        if numbers[i] and numbers[i+1] are in wrong order
+            swap numbers[i] and numbers[i+1]
+        if no swap occurs, the array is sorted
+            quit the loop
+```
+### Example Code: Merge Sort
+```c
+if no doors left
+    return false
+if number behind middle door
+    return true
+else if number < middle door
+    search left half
+else if number > middle door
+    search right half
+```
+```c
+pick up a phone book
+open in the middle of the phone book
+look at page
+if person is on the page
+    call the person
+else if person is earlier in the book
+    search left half of the book
+else if person is later in the book
+    search right half of the book
+else
+    quit the program
 ```
