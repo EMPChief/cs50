@@ -2,7 +2,10 @@
 ====================================================
 
 - Time complexity is a measure of the amount of time an algorithm takes to process as a function of the length of the input. Big O notation is used to classify algorithms based on how their run time or space requirements grow as the input size grows.
-- Ω is used to indicate an upper bound. O is used to indicate an lower bound. Ω is used to indicate an upper bound, and O is used to indicate an lower bound.
+### Big O, Big Omega, and Theta Notations
+- Big O notation (O) represents the upper bound or worst-case scenario of the time complexity of an algorithm.
+- Big Omega notation (Ω) represents the lower bound or best-case scenario of the time complexity of an algorithm.
+- Theta notation (Θ) represents both the upper and lower bounds, essentially providing a tight bound on the time complexity of an algorithm.
 
 ### Constant Time Complexity - O(1) - Ω(1)
 
@@ -45,10 +48,6 @@
 * Definition: The time taken by the algorithm increases factorially with the input size.
 * Example: Solving the traveling salesman problem using brute force.
 * Bounds: This is an upper bound indicating extremely inefficient algorithms for large inputs, with O(n!) typically being the highest time complexity encountered in algorithms.
-### Big O, Big Omega, and Theta Notations
-- Big O notation (O) represents the upper bound or worst-case scenario of the time complexity of an algorithm.
-- Big Omega notation (Ω) represents the lower bound or best-case scenario of the time complexity of an algorithm.
-- Theta notation (Θ) represents both the upper and lower bounds, essentially providing a tight bound on the time complexity of an algorithm.
 
 
 Summary
