@@ -1,0 +1,8 @@
+sort1 uses: Bubble Sort
+How do you know?: Takes slightly less amount of time when running on sorted texts compared to sort3. This behavior suggests it's likely Bubble Sort, which performs better on nearly sorted data due to early termination.
+
+sort2 uses: Merge Sort
+How do you know?: Is the fastest among all. The significantly faster performance compared to the other sorting programs suggests it's likely implementing Merge Sort, known for its \(O(n \log n)\) efficiency.
+
+sort3 uses: Selection Sort
+How do you know?: Takes a lot of time even when running on sorted text compared to sort1. This suggests it's likely Selection Sort, which has a consistent \(O(n^2)\) performance and does not optimize for already sorted data.

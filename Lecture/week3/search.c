@@ -1,41 +1,29 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
-
-typedef struct
-{
-    string name;
-    string number;
-} phonebook;
-
+void draw(int height);
 int main(void)
 {
-    // Phonebook
-    phonebook phonebookname[4];
+    int height = get_int("Height: ");
+    draw(height);
+}
 
-    phonebookname[0].name = "Alice";
-    phonebookname[0].number = "123-4567";
-    phonebookname[1].name = "Bob";
-    phonebookname[1].number = "234-5678";
-    phonebookname[2].name = "Charlie";
-    phonebookname[2].number = "345-6789";
-    phonebookname[3].name = "David";
-    phonebookname[3].number = "456-7890";
-
-    // Get user's input for name
-    string name = get_string("Name: ");
-
-    // Search for the name in the phonebook
-    for (int i = 0; i < 4; i++)
+void draw(int height)
+{
+    int i, j;
+    for (i = 0; i < height; i++)
     {
-        if (strcmp(name, phonebookname[i].name) == 0)
+        for (j = 0; j < height; j++)
         {
-            printf("Number: %s\n", phonebookname[i].number);
-            return 0;
+            if (j < height - i - 1)
+            {
+                printf(" ");
+            }
+            else
+            {
+                printf("#");
+            }
         }
+        printf("\n");
     }
-
-    // If the name was not found
-    printf("No such person.\n");
-    return 1;
 }

@@ -186,7 +186,24 @@ void printArray(int arr[], int size) {
 ### Counting Sort: (O(n+k)) where k is the range of the input
 - Count the number of occurrences of each unique element, and then place them in the correct order based on counts.
 - Example: Count occurrences: 1 (1), 2 (1), 3 (1), ..., 9 (1). Place elements based on counts.
-
+### Example Code: Merge Sort
+```c
+if only one number
+    quit
+else:
+    sort left half of numbers
+    sort right half of numbers
+    Merge sorted halves
+```
+### Example Code: Merge Sort
+```c
+if only one number
+    quit
+else:
+    sort left half of numbers
+    sort right half of numbers
+    Merge sorted halves
+```
 ### Example Code: select sort
 ```c
 for i from  0 to n-1
