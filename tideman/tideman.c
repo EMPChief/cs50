@@ -25,12 +25,12 @@ int pair_count;
 int candidate_count;
 
 // Function prototypes
-bool vote(int rank, string name, int ranks[]);
-void record_preferences(int ranks[]);
-void add_pairs(void);
-void sort_pairs(void);
-void lock_pairs(void);
-void print_winner(void);
+bool vote(int rank, string name, int ranks[]); // sjekker om kandidatens navn er gyldig og oppdaterer ranks-arrayet tilsvarende
+void record_preferences(int ranks[]); // oppdaterer det globale preferences-arrayet basert på en velgers rangeringer
+void add_pairs(void); // legger til alle par av kandidater der en er foretrukket over den andre i pairs-arrayet
+void sort_pairs(void); // sorterer parene i synkende rekkefølge etter seiersmargin
+void lock_pairs(void); // låser parene uten å skape sykler i grafen
+void print_winner(void); // skriver ut vinneren av valget, som er kilden i grafen
 
 int main(int argc, string argv[])
 {
