@@ -1,7 +1,7 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 // Max number of candidates
 #define MAX 9
@@ -27,12 +27,16 @@ int pair_count;
 int candidate_count;
 
 // Function prototypes
-bool vote(int rank, string name, int ranks[]); // sjekker om kandidatens navn er gyldig og oppdaterer ranks-arrayet tilsvarende
-void record_preferences(int ranks[]);          // oppdaterer det globale preferences-arrayet basert på en velgers rangeringer
-void add_pairs(void);                          // legger til alle par av kandidater der en er foretrukket over den andre i pairs-arrayet
-void sort_pairs(void);                         // sorterer parene i synkende rekkefølge etter seiersmargin
-void lock_pairs(void);                         // låser parene uten å skape sykler i grafen
-void print_winner(void);                       // skriver ut vinneren av valget, som er kilden i grafen
+bool vote(
+    int rank, string name,
+    int ranks[]); // sjekker om kandidatens navn er gyldig og oppdaterer ranks-arrayet tilsvarende
+void record_preferences(
+    int ranks[]); // oppdaterer det globale preferences-arrayet basert på en velgers rangeringer
+void add_pairs(
+    void); // legger til alle par av kandidater der en er foretrukket over den andre i pairs-arrayet
+void sort_pairs(void);   // sorterer parene i synkende rekkefølge etter seiersmargin
+void lock_pairs(void);   // låser parene uten å skape sykler i grafen
+void print_winner(void); // skriver ut vinneren av valget, som er kilden i grafen
 
 int main(int argc, string argv[])
 {
@@ -117,12 +121,16 @@ bool vote(int rank, string name, int ranks[])
 void record_preferences(int ranks[])
 {
     // For-løkke som itererer gjennom alle kandidater og oppdaterer preferences-arrayet.
-    for (int firstCandidateIndex = 0; firstCandidateIndex < candidate_count - 1; firstCandidateIndex++)
+    for (int firstCandidateIndex = 0; firstCandidateIndex < candidate_count - 1;
+         firstCandidateIndex++)
     {
-        // Indre for-løkke som itererer gjennom de resterende kandidatene og oppdaterer preferences-arrayet.
-        for (int secondCandidateIndex = firstCandidateIndex + 1; secondCandidateIndex < candidate_count; secondCandidateIndex++)
+        // Indre for-løkke som itererer gjennom de resterende kandidatene og oppdaterer
+        // preferences-arrayet.
+        for (int secondCandidateIndex = firstCandidateIndex + 1;
+             secondCandidateIndex < candidate_count; secondCandidateIndex++)
         {
-            // Øker antall preferanser for kandidaten ranks[firstCandidateIndex] over kandidaten ranks[secondCandidateIndex].
+            // Øker antall preferanser for kandidaten ranks[firstCandidateIndex] over kandidaten
+            // ranks[secondCandidateIndex].
             preferences[ranks[firstCandidateIndex]][ranks[secondCandidateIndex]]++;
         }
     }
@@ -135,13 +143,17 @@ void add_pairs(void)
     int strength_of_candidate;
 
     // For-løkke som itererer gjennom alle kandidater, bortsett fra den siste.
-    for (int firstCandidateIndex = 0; firstCandidateIndex < candidate_count - 1; firstCandidateIndex++)
+    for (int firstCandidateIndex = 0; firstCandidateIndex < candidate_count - 1;
+         firstCandidateIndex++)
     {
-        // indre for-løkke som itererer gjennom alle kandidater som kommer etter den nåværende kandidaten.
-        for (int secondCandidateIndex = firstCandidateIndex + 1; secondCandidateIndex < candidate_count; secondCandidateIndex++)
+        // indre for-løkke som itererer gjennom alle kandidater som kommer etter den nåværende
+        // kandidaten.
+        for (int secondCandidateIndex = firstCandidateIndex + 1;
+             secondCandidateIndex < candidate_count; secondCandidateIndex++)
         {
             // Beregn styrken av preferanse mellom to kandidater.
-            strength_of_candidate = preferences[firstCandidateIndex][secondCandidateIndex] - preferences[secondCandidateIndex][firstCandidateIndex];
+            strength_of_candidate = preferences[firstCandidateIndex][secondCandidateIndex] -
+                                    preferences[secondCandidateIndex][firstCandidateIndex];
 
             // Hvis første kandidat er foretrukket over andre kandidat.
             if (strength_of_candidate > 0)
@@ -170,19 +182,27 @@ void sort_pairs(void)
     {
         // Antar at den sterkeste kandidatindeksen er den gjeldende kandidatindeksen
         int strongest_candidate_index = candidate_index;
-        // indre for-løkke som itererer gjennom alle sammenligningsindekser som er etter den gjeldende kandidatindeksen
+        // indre for-løkke som itererer gjennom alle sammenligningsindekser som er etter den
+        // gjeldende kandidatindeksen
         for (int compare_index = candidate_index + 1; compare_index < pair_count; compare_index++)
         {
             // Beregn styrken til den gjeldende kandidaten og den sterkeste kandidaten
-            int current_strength = preferences[pairs[compare_index].winner][pairs[compare_index].loser] - preferences[pairs[compare_index].loser][pairs[compare_index].winner];
-            int strongest_strength = preferences[pairs[strongest_candidate_index].winner][pairs[strongest_candidate_index].loser] - preferences[pairs[strongest_candidate_index].loser][pairs[strongest_candidate_index].winner];
-            // if statment som sjekker om den gjeldende kandidaten er sterkere enn den sterkeste kandidaten
+            int current_strength =
+                preferences[pairs[compare_index].winner][pairs[compare_index].loser] -
+                preferences[pairs[compare_index].loser][pairs[compare_index].winner];
+            int strongest_strength = preferences[pairs[strongest_candidate_index].winner]
+                                                [pairs[strongest_candidate_index].loser] -
+                                     preferences[pairs[strongest_candidate_index].loser]
+                                                [pairs[strongest_candidate_index].winner];
+            // if statment som sjekker om den gjeldende kandidaten er sterkere enn den sterkeste
+            // kandidaten
             if (current_strength > strongest_strength)
             {
                 strongest_candidate_index = compare_index;
             }
         }
-        // if statment som sjekker om par hvis den sterkeste kandidatindeksen ikke er den gjeldende kandidatindeksen
+        // if statment som sjekker om par hvis den sterkeste kandidatindeksen ikke er den gjeldende
+        // kandidatindeksen
         if (strongest_candidate_index != candidate_index)
         {
             pair temp = pairs[candidate_index];
@@ -232,7 +252,6 @@ void lock_pairs(void)
     return;
 }
 
-
 // Print the winner of the election
 void print_winner(void)
 {
@@ -241,7 +260,7 @@ void print_winner(void)
     {
         // Variabel som sjekker om kandidaten har åpen på kandidatenes plats.
         bool has_locks = false;
-        
+
         // Indre for-løkke som itererer gjennom alle kandidater som er på kandidatenes plats.
         for (int locked_index = 0; locked_index < candidate_count; locked_index++)
         {
@@ -252,7 +271,7 @@ void print_winner(void)
                 break;
             }
         }
-        
+
         // If-setning som sjekker om kandidaten ikke har låser, noe som betyr de er vinneren.
         if (!has_locks)
         {
