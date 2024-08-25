@@ -1,80 +1,83 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define MAX_BUFFER_SIZE 512
 
 int main(int argc, char *argv[])
 {
-    // Sjekk for korrekt bruk
+    // Check for correct usage
     if (argc != 2)
     {
-        // Skriv ut feilmelding hvis programmet ikke får det korrekte antallet kommandolinjeargumenter
+        // Print error message if the program does not receive the correct number of command-line
+        // arguments
         printf("Usage: ./recover image\n");
         return 1;
     }
 
-    // Åpne det rettsmedisinske bildefilen spesifisert på kommandolinjeargumentet
+    // Open the forensic image file specified on the command line
     char *input_filename = argv[1];
     FILE *input_file = fopen(input_filename, "r");
     if (input_file == NULL)
     {
-        // Skriv ut feilmelding hvis det rettsmedisinske bildefilen ikke kan åpnes
+        // Print error message if the forensic image file cannot be opened
         printf("Could not open file.\n");
         return 1;
     }
 
-    // Initialiser variabler
-    bool is_jpeg_open = false;            // Flagg for å holde oversikt over om bildet er en JPEG
-    int jpeg_file_count = 0;              // Teller for å holde oversikt over antall JPEG-bilder i bildet
-    uint8_t file_buffer[MAX_BUFFER_SIZE]; // Puffer for å lagre JPEG-bildedata som finnes
-    char jpeg_filename[8];                // Array for å lagre JPEG-filnavnene
-    FILE *jpeg_file = NULL;               // Pekeren til den nåværende JPEG-filen
+    // Initialize variables
+    bool jpeg_file_open = false;     // Flag to track whether a JPEG file is currently being written
+    int jpeg_image_index = 0;        // Counter to keep track of the number of JPEG images found
+    uint8_t buffer[MAX_BUFFER_SIZE]; // Buffer to store blocks of image data
+    char jpeg_file_name[8];          // Array to store the names of JPEG files
+    FILE *current_jpeg_file = NULL;  // Pointer to the current JPEG file being written
 
-    size_t bytes_read; // Variable to store the number of bytes read
+    size_t num_bytes_read; // Variable to store the number of bytes read
 
-    // Les rettsmedisinske bildefilen blokk for blokk
-    while ((bytes_read = fread(file_buffer, 1, MAX_BUFFER_SIZE, input_file)) > 0)
+    // Read the forensic image file block by block
+    while ((num_bytes_read = fread(buffer, 1, MAX_BUFFER_SIZE, input_file)) > 0)
     {
-        // Sjekk om denne blokken markerer starten på et JPEG-bilde
-        if (file_buffer[0] == 0xff && file_buffer[1] == 0xd8 && file_buffer[2] == 0xff && (file_buffer[3] & 0xf0) == 0xe0)
+        // Check if this block marks the start of a JPEG image
+        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff &&
+            (buffer[3] & 0xf0) == 0xe0)
         {
-            // Hvis ja, lukk det nåværende JPEG-bildet hvis det er åpent
-            if (is_jpeg_open)
+            // If so, close the current JPEG file if it is open
+            if (jpeg_file_open)
             {
-                fclose(jpeg_file);
+                fclose(current_jpeg_file);
             }
 
-            // Åpne en ny JPEG-fil
-            sprintf(jpeg_filename, "%03i.jpg", jpeg_file_count); // Generer filnavnet for JPEG-bildet basert på variabelen jpeg_file_count
-            jpeg_file = fopen(jpeg_filename, "w");               // Åpne den nye JPEG-filen
-            if (jpeg_file == NULL)
+            // Open a new JPEG file
+            sprintf(jpeg_file_name, "%03i.jpg",
+                    jpeg_image_index);                      // Generate file name for the JPEG image
+            current_jpeg_file = fopen(jpeg_file_name, "w"); // Open the new JPEG file
+            if (current_jpeg_file == NULL)
             {
-                // Skriv ut feilmelding hvis JPEG-filen ikke kan opprettes
-                printf("Could not create %s.\n", jpeg_filename);
+                // Print error message if the JPEG file cannot be created
+                printf("Could not create %s.\n", jpeg_file_name);
                 fclose(input_file);
                 return 3;
             }
 
-            jpeg_file_count++; // Øk variabelen jpeg_file_count
-            is_jpeg_open = true;
+            jpeg_image_index++; // Increment the JPEG image index
+            jpeg_file_open = true;
         }
 
-        // Skriv den nåværende blokken til den nåværende JPEG-filen hvis en er åpen
-        if (is_jpeg_open)
+        // Write the current block to the current JPEG file if one is open
+        if (jpeg_file_open)
         {
-            fwrite(file_buffer, 1, bytes_read, jpeg_file);
+            fwrite(buffer, 1, num_bytes_read, current_jpeg_file);
         }
     }
 
-    // Lukk den rettsmedisinske bildefilen og den siste JPEG-filen hvis en er åpen
+    // Close the forensic image file and the last JPEG file if open
     fclose(input_file);
-    if (is_jpeg_open)
+    if (jpeg_file_open)
     {
-        fclose(jpeg_file);
+        fclose(current_jpeg_file);
     }
 
-    // Avslutt programmet med statuskode 0 (suksess) hvis ingen feil ble oppdaget
+    // Exit the program with status code 0 (success) if no errors were encountered
     return 0;
 }
