@@ -1,7 +1,13 @@
-### Pixels
-- picture is a collection of pixels put togheter in a grid to form a picture
-- each pixel can be 0 or 1 resprenting black or white
-## Examples: smily face
+# Pixels and Pointers
+
+## Pixels
+
+### Basic Concept
+- A picture is a collection of pixels arranged in a grid to form an image.
+- In the simplest form, each pixel can be 0 or 1, representing black or white respectively.
+
+### Example: Smiley Face
+
 1 1 0 0 0 0 1 1
 1 0 1 1 1 1 0 1
 0 1 0 1 1 0 1 0
@@ -10,25 +16,43 @@
 0 1 1 0 0 1 1 0
 1 0 1 1 1 1 0 1
 1 1 0 0 0 0 1 1
-### Pixels
-- Pixels on a computer are represented using RGB color. The RGB color model consists of a 3D vector where (0,0,0) represents black and (255,255,255) represents white.
-- In the RGB model, red is denoted by FF 00 00, green by 00 FF 00, and blue by 00 00 FF in software like Photoshop.
-- The hex color codes #000000 and #FFFFFF are used to represent black and white respectively.
-- Hex color codes use the characters 0-9 and A-F (or a-f) to represent colors in base-16, where 0 is the smallest value and FF is the largest.
-- Examples of hex color codes include #FF0000 for red, #00FF00 for green, #0000FF for blue, #FF00FF for magenta, #00FFFF for cyan, #FFFFFF for white, and #000000 for black.
 
-- to distinct we add 0 before the hex code like 0X0 or 0x1 or 0x2 osv osv osv
-# Pointers
-## Pointers in C
+
+### RGB Color Model
+- Pixels on a computer are typically represented using the RGB color model.
+- RGB is a 3D vector where (0,0,0) represents black and (255,255,255) represents white.
+- In software like Photoshop, colors are represented as:
+  - Red: FF 00 00
+  - Green: 00 FF 00
+  - Blue: 00 00 FF
+
+### Hex Color Codes
+- Hex color codes use characters 0-9 and A-F (or a-f) to represent colors in base-16.
+- Examples:
+  - #000000: Black
+  - #FFFFFF: White
+  - #FF0000: Red
+  - #00FF00: Green
+  - #0000FF: Blue
+  - #FF00FF: Magenta
+  - #00FFFF: Cyan
+- To distinguish hex numbers, we often prefix them with "0x" (e.g., 0x0, 0x1, 0x2, etc.)
+
+## Pointers
+
+### Pointers in C
 - A pointer is a variable that stores the memory address of another variable.
-- To store the memory address of a variable, we use the "&" operator, and to access the value stored at that memory address, we use the "*" operator.
-- In the same function, we can check the memory address by using `(void*)&number`.
+- The "&" operator is used to get the memory address of a variable.
+- The "*" operator is used to access the value stored at a memory address.
+- To check the memory address within the same function, use `(void*)&variable`.
 
-## Pointer Arithmetic
-- Pointer arithmetic in C allows you to perform arithmetic operations on pointers.
-- For example, if `ptr` is a pointer pointing to an integer, `ptr++` will increment the pointer to point to the next memory location of the same data type.
--  arithmetic is a powerful feature in C that can be used to iterate over arrays efficiently.
-```cPointer
+### Pointer Arithmetic
+- Pointer arithmetic allows you to perform arithmetic operations on pointers.
+- Example: If `ptr` is a pointer to an integer, `ptr++` will increment the pointer to the next integer in memory.
+- This feature is useful for efficient array iteration.
+
+### Example: Printing Memory Address
+```c
 #include <stdio.h>
 
 int main(void)
@@ -38,8 +62,10 @@ int main(void)
     return 0;
 }
 ```
-### a exempel i found for pointers
+###Example: Pointer Arithmetic with Arrays
+
 ```c
+
 int arr[] = {10, 20, 30, 40, 50};
 int *ptr = arr; // ptr points to the first element of arr
 for (int i = 0; i < 5; i++) {
