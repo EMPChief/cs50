@@ -49,9 +49,8 @@ int main(int argc, char *argv[])
             }
 
             // Open a new JPEG file
-            sprintf(jpeg_file_name, "%03i.jpg",
-                    jpeg_image_index);                      // Generate file name for the JPEG image
-            current_jpeg_file = fopen(jpeg_file_name, "w"); // Open the new JPEG file
+            sprintf(jpeg_file_name, "%03i.jpg", jpeg_image_index); // Generate file name for the JPEG image
+            current_jpeg_file = fopen(jpeg_file_name, "w");        // Open the new JPEG file
             if (current_jpeg_file == NULL)
             {
                 // Print error message if the JPEG file cannot be created
