@@ -51,6 +51,31 @@
 - Example: If `ptr` is a pointer to an integer, `ptr++` will increment the pointer to the next integer in memory.
 - This feature is useful for efficient array iteration.
 
+### typedef
+- A typedef is a type definition that allows you to create an alias for an existing type.
+- For example, `typedef int myint` will create an alias for the `int` type called `myint`.
+- This feature is useful when you want to simplify type declarations.
+
+### Example: Typedef with Structures
+```c
+typedef struct
+{
+  char *name;
+  int age;
+} Person;
+```
+Example: Typedef for uint8_t
+```c
+typedef uint8_t byte;
+```
+- This will create an alias for the `uint8_t` type called `byte`.
+- it is often used in header files.
+- the code used in cs50 is as follows
+```c
+typedef char *string;
+```
+
+
 ### Example: Printing Memory Address
 ```c
 #include <stdio.h>
@@ -71,5 +96,48 @@ int *ptr = arr; // ptr points to the first element of arr
 for (int i = 0; i < 5; i++) {
     printf("%d ", *ptr); // Print the value pointed by ptr
     ptr++; // Move ptr to the next element
+}
+```
+### Example: String Manipulation and Memory Addresses
+```c
+#include "cs50.h"
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string greeting = "Hello There"; // Initialiserer en streng med hilsenen
+    printf("%s\n", greeting);        // Skriv ut strengen
+    printf("%p\n", greeting);        // Skriv ut minneadressen til strengen
+    printf("%p\n", &greeting[0]);    // Skriv ut minneadressen til det første tegnet i strengen
+    
+    int length = strlen(greeting);   // Finner lengden på strengen
+    for (int index = 0; index < length; index++)
+    {
+        printf("%c\n", greeting[index]);  // Skriv ut hvert tegn i strengen
+        printf("%p\n", &greeting[index]); // Skriv ut minneadressen til hvert tegn
+    }
+    return 0;
+}
+```
+### Example: String Manipulation and Memory Addresses (removed cs50 header)
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char *greeting = "Hello There"; // Initialiserer en streng med hilsenen
+    printf("%s\n", greeting);        // Skriv ut strengen
+    printf("%p\n", greeting);        // Skriv ut minneadressen til strengen
+    printf("%p\n", &greeting[0]);    // Skriv ut minneadressen til det første tegnet i strengen
+    
+    int length = strlen(greeting);   // Finner lengden på strengen
+    for (int index = 0; index < length; index++)
+    {
+        printf("%c\n", greeting[index]);  // Skriv ut hvert tegn i strengen
+        printf("%p\n", &greeting[index]); // Skriv ut minneadressen til hvert tegn
+    }
+    return 0;
 }
 ```
