@@ -87,7 +87,7 @@ int main(void)
     return 0;
 }
 ```
-###Example: Pointer Arithmetic with Arrays
+### Example: Pointer Arithmetic with Arrays
 
 ```c
 
