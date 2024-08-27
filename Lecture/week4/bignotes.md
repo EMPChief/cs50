@@ -159,6 +159,36 @@ The most commonly used tool in Valgrind is Memcheck, which detects memory-relate
 - Always compile with `-g` for debugging symbols.
 - Use `--leak-check=full` for detailed leak information:
 
-### garbage values
-- garbage values are values that are not used in a program and cause undefined behavior.
-- For example, the value 0 is a garbage value because it is not used in any arithmetic expression.
+### Garbage Values
+
+Garbage values are unpredictable and undefined values that exist in uninitialized memory locations. They are not specifically unused values, but rather values that haven't been intentionally set by the program.
+
+Key points about garbage values:
+
+1. Definition: Garbage values are the contents of uninitialized variables or memory locations.
+
+2. Cause: They occur when memory is allocated but not initialized with a specific value.
+
+3. Unpredictability: The actual content of garbage values can be anything - it's whatever data happened to be in that memory location from previous usage.
+
+4. Undefined Behavior: Using garbage values can lead to undefined behavior in a program, potentially causing bugs or crashes.
+
+5. Common occurrences:
+   - Uninitialized local variables in C
+   - Uninitialized dynamically allocated memory
+
+6. Prevention: Always initialize variables before use, and set allocated memory to known values if needed.
+
+Example:
+```c
+#include <stdio.h>
+
+int main() {
+    int x;  // Uninitialized variable
+    printf("%d\n", x);  // Prints a garbage value
+    
+    return 0;
+}
+```
+- In this example, x contains a garbage value because it was not initialized.
+- Note: The value 0 is not inherently a garbage value. It becomes a garbage value only if it appears in an uninitialized variable or memory location.
