@@ -74,67 +74,90 @@ typedef uint8_t byte;
 ```c
 typedef char *string;
 ```
-### maloc and free
-- `malloc` and `free` are functions in the standard library that allocate and free memory in the heap.
-- The `malloc` function returns a pointer to the allocated memory.
-- The `free` function frees the memory allocated by `malloc`.
-- the maloc returns a pointer to the allocated memory for a chunk of memory of size `bytes`
-- the free frees the memory pointed to by `ptr`
+### malloc and free
 
-### Example: Using malloc and free
+- `malloc` and `free` are functions in the C standard library for dynamic memory management.
+- `malloc` (memory allocation) allocates a specified number of bytes in the heap.
+- `free` deallocates memory that was previously allocated by `malloc`, `calloc`, or `realloc`.
+
+#### malloc
+- Syntax: `void *malloc(size_t size)`
+- Returns a pointer to the allocated memory, or NULL if the allocation fails.
+- The allocated memory is uninitialized.
+
+#### free
+- Syntax: `void free(void *ptr)`
+- Deallocates the memory block pointed to by `ptr`.
+- `ptr` must have been returned by a previous call to `malloc`, `calloc`, or `realloc`.
+
+#### Example: Using malloc and free
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
 {
-    char *hello = malloc(5 * sizeof(char));
+    char *hello = malloc(6 * sizeof(char));  // Allocate space for 5 chars + null terminator
+    if (hello == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 1;
+    }
+
     hello[0] = 'H';
     hello[1] = 'e';
     hello[2] = 'l';
     hello[3] = 'l';
     hello[4] = 'o';
+    hello[5] = '\0';  // Null terminator
+
     printf("%s\n", hello);
     free(hello);
     return 0;
 }
 ```
 ### realloc
-- `realloc` is a function in the standard library that allows you to resize an existing memory allocation.
-- The `realloc` function returns a pointer to the resized memory.
-- The `realloc` function allows you to resize the memory allocation pointed to by `ptr` to `bytes`
-- the realloc returns a pointer to the resized memory
+- realloc is used to resize a previously allocated memory block.
+- Syntax: void *realloc(void *ptr, size_t new_size)
+- Returns a pointer to the reallocated memory, or NULL if the reallocation fails
+- If ptr is NULL, realloc behaves like malloc.
+- If new_size is 0 and ptr is not NULL, realloc behaves like free.
 
 ### Example: Using realloc
 ```c
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(void)
 {
-    char *hello = malloc(5 * sizeof(char));
-    hello[0] = 'H';
-    hello[1] = 'e';
-    hello[2] = 'l';
-    hello[3] = 'l';
-    hello[4] = 'o';
+    char *hello = malloc(6 * sizeof(char));
+    if (hello == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 1;
+    }
+
+    strcpy(hello, "Hello");
     printf("%s\n", hello);
-    hello = realloc(hello, 10 * sizeof(char));
-    hello[5] = '!';
-    hello[6] = '!';
-    hello[7] = '!';
-    hello[8] = '!';
-    hello[9] = '!';
+
+    hello = realloc(hello, 11 * sizeof(char));
+    if (hello == NULL) {
+        fprintf(stderr, "Memory reallocation failed\n");
+        return 1;
+    }
+
+    strcat(hello, " World");
     printf("%s\n", hello);
+
     free(hello);
     return 0;
 }
 ```
 ### calloc
-- `calloc` is a function in the standard library that allows you to allocate memory and set it to zero.
-- The `calloc` function returns a pointer to the allocated memory.
+- calloc allocates memory for an array of elements and initializes all bytes to zero.
+- Syntax: void *calloc(size_t num_elements, size_t element_size)
 - The `calloc` function allows you to allocate the memory allocation pointed to by `ptr` to `bytes`
-- the calloc returns a pointer to the allocated memory
+- Returns a pointer to the allocated memory, or NULL if the allocation fails.
 
 ### Example: Using calloc
 ```c
@@ -143,17 +166,45 @@ int main(void)
 
 int main(void)
 {
-    char *hello = calloc(5, sizeof(char));
-    hello[0] = 'H';
-    hello[1] = 'e';
-    hello[2] = 'l';
-    hello[3] = 'l';
-    hello[4] = 'o';
-    printf("%s\n", hello);
-    free(hello);
+    int *numbers = calloc(5, sizeof(int));
+    if (numbers == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 1;
+    }
+
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", numbers[i]);  // Will print "0 0 0 0 0"
+    }
+    printf("\n");
+
+    free(numbers);
     return 0;
 }
 ```
+### sizeof
+- sizeof is an operator (not a function) that returns the size in bytes of a type or variable.
+- Syntax: sizeof(type) or sizeof expression
+- 's evaluated at compile-time, not at runtime
+
+### Example: Using sizeof
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Size of int: %zu bytes\n", sizeof(int));
+    printf("Size of char: %zu byte\n", sizeof(char));
+    printf("Size of float: %zu bytes\n", sizeof(float));
+    printf("Size of double: %zu bytes\n", sizeof(double));
+
+    int numbers[] = {1, 2, 3, 4, 5};
+    printf("Size of numbers array: %zu bytes\n", sizeof(numbers));
+    printf("Number of elements in numbers array: %zu\n", sizeof(numbers) / sizeof(numbers[0]));
+
+    return 0;
+}
+```
+
 
 ### Example: Comparing Strings with Pointers and Arrays and get user input
 ```c
