@@ -155,3 +155,10 @@ The most commonly used tool in Valgrind is Memcheck, which detects memory-relate
 - Memory leaks
 - Use of inappropriate malloc/free/new/delete/new[]/delete[] pairs
 - Overlapping src and dst pointers in memcpy() and related functions
+#### Tips:
+- Always compile with `-g` for debugging symbols.
+- Use `--leak-check=full` for detailed leak information:
+
+### garbage values
+- garbage values are values that are not used in a program and cause undefined behavior.
+- For example, the value 0 is a garbage value because it is not used in any arithmetic expression.
