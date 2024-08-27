@@ -153,6 +153,7 @@ int main(void)
     free(hello);
     return 0;
 }
+```
 
 ### Example: Comparing Strings with Pointers and Arrays and get user input
 ```c
