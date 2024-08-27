@@ -6,8 +6,7 @@ int main(void)
 
     for (int index = 0; index < 2000; index++)
     {
-        scores[index] = index;
-        printf("%d\n", scores[index]);
+        printf("%i\n", scores[index]);
     }
     return 0;
 }

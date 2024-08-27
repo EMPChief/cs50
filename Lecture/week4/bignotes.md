@@ -192,3 +192,14 @@ int main() {
 ```
 - In this example, x contains a garbage value because it was not initialized.
 - Note: The value 0 is not inherently a garbage value. It becomes a garbage value only if it appears in an uninitialized variable or memory location.
+
+
+
+### Videos:
+
+- [Binky Pointer Fun Video C](https://www.youtube.com/watch?v=5VnDaHBi8dM)
+- [Dynamic Memory Allocation in C](https://www.youtube.com/watch?v=Dn87Bna23TQ)
+- [C Pointers](https://www.youtube.com/watch?v=KGhacRRMnDw)
+- [Structure Types (Using typedef)](https://www.youtube.com/watch?v=Bw3sUC6Txus)
+- [Standard C Library Functions Table, By Name](https://www.ibm.com/docs/en/i/7.5?topic=extensions-standard-c-library-functions-table-by-name)
+
