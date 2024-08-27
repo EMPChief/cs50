@@ -74,8 +74,147 @@ typedef uint8_t byte;
 ```c
 typedef char *string;
 ```
+### maloc and free
+- `malloc` and `free` are functions in the standard library that allocate and free memory in the heap.
+- The `malloc` function returns a pointer to the allocated memory.
+- The `free` function frees the memory allocated by `malloc`.
+- the maloc returns a pointer to the allocated memory for a chunk of memory of size `bytes`
+- the free frees the memory pointed to by `ptr`
 
+### Example: Using malloc and free
+```c
+#include <stdio.h>
+#include <stdlib.h>
 
+int main(void)
+{
+    char *hello = malloc(5 * sizeof(char));
+    hello[0] = 'H';
+    hello[1] = 'e';
+    hello[2] = 'l';
+    hello[3] = 'l';
+    hello[4] = 'o';
+    printf("%s\n", hello);
+    free(hello);
+    return 0;
+}
+```
+### realloc
+- `realloc` is a function in the standard library that allows you to resize an existing memory allocation.
+- The `realloc` function returns a pointer to the resized memory.
+- The `realloc` function allows you to resize the memory allocation pointed to by `ptr` to `bytes`
+- the realloc returns a pointer to the resized memory
+
+### Example: Using realloc
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char *hello = malloc(5 * sizeof(char));
+    hello[0] = 'H';
+    hello[1] = 'e';
+    hello[2] = 'l';
+    hello[3] = 'l';
+    hello[4] = 'o';
+    printf("%s\n", hello);
+    hello = realloc(hello, 10 * sizeof(char));
+    hello[5] = '!';
+    hello[6] = '!';
+    hello[7] = '!';
+    hello[8] = '!';
+    hello[9] = '!';
+    printf("%s\n", hello);
+    free(hello);
+    return 0;
+}
+```
+### calloc
+- `calloc` is a function in the standard library that allows you to allocate memory and set it to zero.
+- The `calloc` function returns a pointer to the allocated memory.
+- The `calloc` function allows you to allocate the memory allocation pointed to by `ptr` to `bytes`
+- the calloc returns a pointer to the allocated memory
+
+### Example: Using calloc
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char *hello = calloc(5, sizeof(char));
+    hello[0] = 'H';
+    hello[1] = 'e';
+    hello[2] = 'l';
+    hello[3] = 'l';
+    hello[4] = 'o';
+    printf("%s\n", hello);
+    free(hello);
+    return 0;
+}
+
+### Example: Comparing Strings with Pointers and Arrays and get user input
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    char *first = malloc(80 * sizeof(char));
+    char *second = malloc(80 * sizeof(char));
+    
+    if (first == NULL || second == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("First: ");
+    fgets(first, 80, stdin);
+    first[strcspn(first, "\n")] = 0;
+
+    printf("Second: ");
+    fgets(second, 80, stdin);
+    second[strcspn(second, "\n")] = 0;
+
+    if (strcmp(first, second) == 0)
+    {
+        printf("The strings are the same: %s | %s\n", first, second);
+    }
+    else
+    {
+        printf("The strings are different: %s | %s\n", first, second);
+    }
+
+    free(first);
+    free(second);
+    return 0;
+}
+```
+### Example: Printing Characters with Pointers and Arrays
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char *greeting = "Hello There";
+    printf("%c\n", *greeting);
+    printf("%c\n", *(greeting + 1));
+    printf("%c\n", *(greeting + 2));
+    printf("%c\n", *(greeting + 3));
+    printf("%c\n", *(greeting + 4));
+    int length = strlen(greeting);
+    for (int index = 0; index < length; index++)
+    {
+        printf("%c\n", *(greeting + index));
+    }
+    return 0;
+}
+
+```
 ### Example: Printing Memory Address
 ```c
 #include <stdio.h>
@@ -138,6 +277,93 @@ int main(void)
         printf("%c\n", greeting[index]);  // Skriv ut hvert tegn i strengen
         printf("%p\n", &greeting[index]); // Skriv ut minneadressen til hvert tegn
     }
+    return 0;
+}
+```
+### Example: Malloc and Free and Memory Addresses
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    char *first = malloc(80 * sizeof(char));
+    char *second = malloc(80 * sizeof(char));
+    
+    if (first == NULL || second == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("First: ");
+    fgets(first, 80, stdin);
+    first[strcspn(first, "\n")] = 0;
+
+    printf("Second: ");
+    fgets(second, 80, stdin);
+    second[strcspn(second, "\n")] = 0;
+
+    printf("Memory address of first: %p\n", first);
+    printf("Memory address of second: %p\n", second);
+
+    free(first);
+    free(second);
+    return 0;
+}
+```
+### Example: This will cause a segmentation fault
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "cs50.h"
+#include <ctype.h>
+
+int main(void)
+{
+    char *s = get_string("Before: ");
+    char *t = s;
+    
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+    printf("After: %s\n", t);
+}
+```
+### Example: This will not cause a segmentation fault
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "cs50.h"
+#include <ctype.h>
+
+int main(void)
+{
+    char *s = get_string("Before: ");
+    if (s == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    char *t = malloc(strlen(s) + 1);
+    if (t == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 2;
+    }
+
+    strcpy(t, s);
+    
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+    printf("After: %s\n", t);
+    free(t);
     return 0;
 }
 ```

@@ -1,18 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include "cs50.h"
+#include <ctype.h>
 
 int main(void)
 {
-    char *greeting = "Hello There"; // Initialiserer en streng med hilsenen
-    printf("%s\n", greeting);        // Skriv ut strengen
-    printf("%p\n", greeting);        // Skriv ut minneadressen til strengen
-    printf("%p\n", &greeting[0]);    // Skriv ut minneadressen til det første tegnet i strengen
-    
-    int length = strlen(greeting);   // Finner lengden på strengen
-    for (int index = 0; index < length; index++)
+    char *s = get_string("Before: ");
+    if (s == NULL)
     {
-        printf("%c\n", greeting[index]);  // Skriv ut hvert tegn i strengen
-        printf("%p\n", &greeting[index]); // Skriv ut minneadressen til hvert tegn
+        printf("Memory allocation failed.\n");
+        return 1;
     }
+    char *t = malloc(strlen(s) + 1);
+    if (t == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 2;
+    }
+
+    strcpy(t, s);
+    
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+    printf("After: %s\n", t);
+    free(t);
     return 0;
 }
