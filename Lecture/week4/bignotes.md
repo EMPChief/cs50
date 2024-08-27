@@ -1,13 +1,17 @@
+# Usefull links:
+- [Binky Pointer Fun Video C](https://www.youtube.com/watch?v=5VnDaHBi8dM)
+- [Dynamic Memory Allocation in C](https://www.youtube.com/watch?v=Dn87Bna23TQ)
+- [C Pointers](https://www.youtube.com/watch?v=KGhacRRMnDw)
+- [Structure Types (Using typedef)](https://www.youtube.com/watch?v=Bw3sUC6Txus)
+- [Standard C Library Functions Table, By Name](https://www.ibm.com/docs/en/i/7.5?topic=extensions-standard-c-library-functions-table-by-name)
+
+
 # Pixels and Pointers
-
 ## Pixels
-
 ### Basic Concept
 - A picture is a collection of pixels arranged in a grid to form an image.
 - In the simplest form, each pixel can be 0 or 1, representing black or white respectively.
-
 ### Example: Smiley Face
-
 - 1 1 0 0 0 0 1 1
 - 1 0 1 1 1 1 0 1
 - 0 1 0 1 1 0 1 0
@@ -16,8 +20,6 @@
 - 0 1 1 0 0 1 1 0
 - 1 0 1 1 1 1 0 1
 - 1 1 0 0 0 0 1 1
-
-
 ### RGB Color Model
 - Pixels on a computer are typically represented using the RGB color model.
 - RGB is a 3D vector where (0,0,0) represents black and (255,255,255) represents white.
@@ -194,12 +196,4 @@ int main() {
 - Note: The value 0 is not inherently a garbage value. It becomes a garbage value only if it appears in an uninitialized variable or memory location.
 
 
-
-### Videos:
-
-- [Binky Pointer Fun Video C](https://www.youtube.com/watch?v=5VnDaHBi8dM)
-- [Dynamic Memory Allocation in C](https://www.youtube.com/watch?v=Dn87Bna23TQ)
-- [C Pointers](https://www.youtube.com/watch?v=KGhacRRMnDw)
-- [Structure Types (Using typedef)](https://www.youtube.com/watch?v=Bw3sUC6Txus)
-- [Standard C Library Functions Table, By Name](https://www.ibm.com/docs/en/i/7.5?topic=extensions-standard-c-library-functions-table-by-name)
 
