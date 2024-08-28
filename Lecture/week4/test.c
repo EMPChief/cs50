@@ -6,26 +6,38 @@
 
 int main(void)
 {
-    char *s = get_string("Before: ");
-    if (s == NULL)
+    // Get input string from user
+    char *inputString = get_string("Before: ");
+    if (inputString == NULL)
     {
         printf("Memory allocation failed.\n");
         return 1;
     }
-    char *t = malloc(strlen(s) + 1);
-    if (t == NULL)
+
+    // Allocate memory for the output string
+    char *outputString = malloc(strlen(inputString) + 1);
+    if (outputString == NULL)
     {
         printf("Memory allocation failed.\n");
+        free(inputString);
         return 2;
     }
 
-    strcpy(t, s);
+    // Copy the input string to the output string
+    strcpy(outputString, inputString);
     
-    if (strlen(t) > 0)
+    // Capitalize the first character of the output string if it is not empty
+    if (strlen(outputString) > 0)
     {
-        t[0] = toupper(t[0]);
+        outputString[0] = toupper(outputString[0]);
     }
-    printf("After: %s\n", t);
-    free(t);
+
+    // Print the result
+    printf("After: %s\n", outputString);
+
+    // Free allocated memory
+    free(outputString);
+    free(inputString);
+
     return 0;
 }

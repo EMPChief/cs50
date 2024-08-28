@@ -14,4 +14,6 @@ int main(void)
         t[0] = toupper(t[0]);
     }
     printf("After: %s\n", t);
+    return 0;
+    
 }

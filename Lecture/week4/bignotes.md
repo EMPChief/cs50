@@ -134,6 +134,12 @@ typedef char *string;
 - Computes the length of the C string `str` up to, but not including the terminating null character.
 - Returns the number of characters in the string.
 
+### scanf
+- scanf is a function used to read formatted input from the standard input (usually the keyboard).
+- Syntax: int scanf(const char *format, ...)
+- Reads data from the standard input and stores it according to the format specified in the format string.
+- The format string can include format specifiers that determine how to interpret the input data. Common format specifiers include %d for integers, %f for floating-point numbers, and %s for strings.
+
 ### Valgrind
 
 Valgrind is a powerful suite of debugging and profiling tools for Linux and macOS programs. It's particularly useful for detecting memory-related errors and memory leaks in C and C++ programs.
@@ -181,19 +187,181 @@ Key points about garbage values:
 
 6. Prevention: Always initialize variables before use, and set allocated memory to known values if needed.
 
-Example:
-```c
-#include <stdio.h>
-
-int main() {
-    int x;  // Uninitialized variable
-    printf("%d\n", x);  // Prints a garbage value
-    
-    return 0;
-}
-```
-- In this example, x contains a garbage value because it was not initialized.
+- In the example, x contains a garbage value because it was not initialized.
 - Note: The value 0 is not inherently a garbage value. It becomes a garbage value only if it appears in an uninitialized variable or memory location.
 
+### Scope
 
+Scope refers to the visibility and accessibility of variables within different parts of a program. It determines where in your code a particular variable can be used or modified.
 
+Key points about scope:
+
+1. Types of Scope:
+   - Global Scope: Variables declared outside all functions
+   - Local Scope: Variables declared inside a function
+   - Block Scope: Variables declared inside a block (e.g., within loops or conditional statements)
+
+2. Lifetime: The scope of a variable also determines its lifetime - how long it exists in memory.
+
+3. Variable Shadowing: When a local variable has the same name as a global variable, it "shadows" the global variable within its scope.
+
+### Passing by Value (copy of value)
+- Passing by value is a method of passing arguments to a function where a copy of the variable's value is passed, rather than a reference to the variable itself.
+- Key points about passing by value:
+
+1. Creation: When an argument is passed by value, a copy of the argument is created and passed to the function.
+2. Original Unchanged: Changes made to the parameter inside the function do not affect the original variable in the calling code.
+3. Memory Usage: Each parameter passed by value requires additional memory to store the copy.
+Default in C: In C, all arguments are passed by value by default.
+
+- In the example, num is passed by value to modifyValue(). The function modifies its local copy of the value, but the original num in main() remains unchanged.
+
+### Overflow
+
+Overflow is a condition that occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of digits – either higher than the maximum or lower than the minimum representable value.
+
+Key points about overflow:
+
+1. Types of Overflow:
+   - Integer Overflow: Occurs with integer types
+   - Floating-Point Overflow: Occurs with floating-point types
+
+2. Unsigned Integer Overflow:
+   - When the result exceeds the maximum value, it "wraps around" to the minimum value
+   - In C, this behavior is well-defined
+
+3. Signed Integer Overflow:
+   - Leads to undefined behavior in C
+   - Can result in unexpected values or program crashes
+
+4. Floating-Point Overflow:
+   - Results in special values like "infinity" or "NaN" (Not a Number)
+
+5. Underflow:
+   - The opposite of overflow, occurs when a value is too small to be represented
+   - For floating-point types, can result in "subnormal" numbers or zero
+
+6. Security Implications:
+   - Can be exploited in buffer overflow attacks
+   - May lead to logical errors in calculations
+### Prevention:
+- Use appropriate data types for the expected range of values
+- Check for potential overflow before performing operations
+- Use libraries or built-in functions that handle large numbers
+- In critical applications, use overflow-checking compiler options or safe integer libraries
+
+### File I/O (Input/Output)
+File I/O refers to the process of reading from and writing to files in a program. It allows programs to store and retrieve data persistently. Here's an overview of key concepts related to file I/O:
+1. Basic Operations:
+
+   - Open a File: To perform I/O operations, you first need to open a file. This can be done in various modes (e.g., read, write, append).
+   - Read from a File: Once a file is opened, you can read its contents using various methods (e.g., reading line by line or reading the entire file at once).
+   - Write to a File: You can write data to a file, either by overwriting its existing content or appending new data to the end.
+   - Close a File: After performing the necessary operations, the file should be closed to release system resources and ensure data is properly saved.
+
+2. File Modes:
+
+   - Read (r): Open an existing file for reading. The file must exist, and an error occurs if it does not.
+   - Write (w): Open a file for writing. If the file does not exist, it is created. If the file exists, its content is truncated (i.e., erased).
+   - Append (a): Open a file for writing. If the file does not exist, it is created. If the file exists, new data is added at the end.
+   - Read/Write (r+): Open a file for both reading and writing. The file must exist, and an error occurs if it does not.
+   - Binary Modes (b): Used in conjunction with other modes to open the file in binary mode (e.g., rb, wb). This is useful for non-text files (e.g., images, executables).
+
+3. File Handling in C:
+
+   - Opening a File: Use fopen(), which returns a FILE* pointer to the file. Example: FILE *file = fopen("example.txt", "r");
+   - Reading from a File: Functions include fgetc(), fgets(), and fread().
+   - Writing to a File: Functions include fputc(), fputs(), and fwrite().
+   - Closing a File: Use fclose(). Example: fclose(file);
+
+4. Error Handling:
+
+   - Check the return values of file operations. For example, fopen() returns NULL if the file cannot be opened.
+   - Use ferror() to check for errors during file operations and clearerr() to reset the error indicator.
+
+5. Buffering:
+
+   - File I/O operations may be buffered for efficiency. This means that data is temporarily stored in memory before being written to or read from a file.
+   - You can manually flush the buffer using fflush(), ensuring that all data is written to the file.
+
+6. File I/O in Other Languages:
+
+   - Python: Uses built-in functions such as open(), read(), write(), and close(). Example: with open('example.txt', 'r') as file: content = file.read()
+   - Java: Uses classes like FileReader, FileWriter, BufferedReader, and BufferedWriter. Example: BufferedReader reader = new BufferedReader(new FileReader("example.txt"));
+   - C++: Uses file stream classes such as ifstream, ofstream, and fstream. Example: std::ifstream file("example.txt");
+
+7. Security Considerations:
+
+   - Validate File Paths: Ensure that file paths are validated to prevent directory traversal attacks.
+   - Permissions: Set appropriate file permissions to control access to files.
+   - Sanitize Input: Be cautious of file names or paths obtained from user input to prevent security vulnerabilities.
+
+### Heap
+
+The heap is a data structure that operates in a more complex manner compared to the stack. It follows a dynamic memory allocation model and can grow and shrink in size as needed.
+
+Characteristics:
+- Structure: The heap operates based on the principle of dynamic memory allocation. Elements are added and removed dynamically as the program requires.
+- Memory Allocation: The heap is managed manually or semi-automatically, often using garbage collection for automatic memory management.
+- Size Limit: The heap is typically larger and more flexible than the stack. It can accommodate a variable amount of memory depending on system limitations.
+- Access Time: Accessing heap memory can be slower compared to stack memory due to its complexity and the overhead of dynamic allocation.
+
+Usage:
+- Dynamic Memory Allocation: The heap is commonly used for allocating memory at runtime. This allows for creating complex data structures with a size determined at runtime, such as linked lists, trees, or arrays.
+
+Pros and Cons:
+
+Pros:
+- Flexible Size: The heap provides a flexible size, allowing for the allocation of memory based on the program's needs. It eliminates the need for a fixed size limit.
+- Suitable for Large or Dynamic Data Structures: The heap is well-suited for creating large or dynamic data structures where the size is not known at compile time.
+
+Cons:
+- Slower Access: Accessing heap memory can be slower compared to stack memory due to the complexity of dynamic memory allocation and the overhead of managing memory.
+- Requires Explicit Management: It is important to manage heap memory explicitly to prevent memory leaks and fragmentation, which can lead to performance issues.
+
+### Stack
+The stack is a data structure that follows the Last In, First Out (LIFO) principle. It operates based on the principle of Last In, First Out, where the most recently added item is the first to be removed.
+
+Characteristics:
+- Structure: The stack operates in a Last In, First Out (LIFO) manner.
+- Memory Allocation: Stack memory is used for static memory allocation. It automatically handles allocation and deallocation of memory.
+- Size Limit: The size of the stack is usually smaller and limited compared to the heap.
+- Access Time: Access to stack memory is generally faster due to its simple structure and the fact that memory is managed by the system automatically.
+
+Usage:
+- Function Calls: Each function call creates a stack frame that includes local variables, function parameters, and return addresses.
+- Local Variables: Variables declared inside functions or blocks are typically stored in stack memory.
+
+Pros and Cons:
+Pros:
+- Fast access
+- Automatic memory management
+
+Cons:
+- Limited size: Stack overflow can occur if the stack grows too large (e.g., deep recursion).
+- Fixed size: The stack is less flexible for dynamic data.
+
+## Stack vs Heap
+
+**Lifetime:**
+- Stack: Memory is allocated and deallocated automatically when functions or blocks are entered or exited.
+- Heap: Memory remains allocated until explicitly deallocated or garbage collected.
+
+**Scope:**
+- Stack: Local to function or block.
+- Heap: Accessible globally as long as you maintain a reference to the allocated memory.
+
+**Memory Management:**
+- Stack: Managed automatically.
+- Heap: Requires manual management (in C/C++) or relies on garbage collection (in languages like Python, Java).
+
+**Security Considerations:**
+- Stack:
+    - Stack Overflow: Can lead to crashes or vulnerabilities if not properly managed (e.g., buffer overflows).
+- Heap:
+    - Memory Leaks: Can occur if dynamically allocated memory is not properly freed, leading to resource exhaustion.
+    - Dangling Pointers: Can occur if memory is freed but still accessed.
+
+### Summary
+
+Understanding the differences between stack and heap memory is crucial for effective programming, debugging, and optimizing code. The stack is best suited for fixed-size data with automatic management, while the heap is ideal for dynamic, large-scale data with manual memory management.

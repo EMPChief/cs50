@@ -65,21 +65,21 @@ O(1) < O(log n) < O(n) < O(n log n) < O(n^2) < O(n^3) < O(n!)
 ### Syntax:
 ```c
 typedef existing_type new_alias;
-```
-### Example:
-```c
-typedef unsigned long ulong;
-ulong myVar; // myVar is now an alias for unsigned long
-```
-### Structures
-- Structures (struct) in C allow you to group different types of variables under a single name. This is particularly useful for representing real-world entities that have multiple attributes.
+### Bubble Sort
+Bubble sort works by repeatedly swapping adjacent elements if they are in the wrong order. It continues this process until the array is sorted.
 
-### Defining a Structure:
-```c
-struct Person {
-    char name[50];
-    int age;
-    float height;
+```python
+def bubble_sort(numbers):
+    n = len(numbers)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - 1 - i):
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+                swapped = True
+        if not swapped:
+            break
+    return numbers
 };
 ```
 ### Using Typedef with Structures:
