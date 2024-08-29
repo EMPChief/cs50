@@ -4,7 +4,7 @@
 - [C Pointers](https://www.youtube.com/watch?v=KGhacRRMnDw)
 - [Structure Types (Using typedef)](https://www.youtube.com/watch?v=Bw3sUC6Txus)
 - [Standard C Library Functions Table, By Name](https://www.ibm.com/docs/en/i/7.5?topic=extensions-standard-c-library-functions-table-by-name)
-
+- [CS50x 2024 - Lecture 4 - Memory](https://www.youtube.com/watch?v=F9-yqoS7b8w)
 
 # Pixels and Pointers
 ## Pixels
