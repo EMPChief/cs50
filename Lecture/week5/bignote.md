@@ -1,75 +1,153 @@
 # Usefull links:
 - [Jack Learns the Facts About Queues and Stacks](https://www.youtube.com/watch?v=ItAG3s6KIEI)
 - [CS50x 2024 - Lecture 5 - Data Structures](https://www.youtube.com/watch?v=0euvEdPwQnQ)
-# Stacks & Queues
-### Stacks and Queues are fundamental data structures in computer science, each with specific characteristics and use cases.
-## Stack
+# Data Structures Notes
+
+## Stacks & Queues
+
+Stacks and queues are fundamental data structures in computer science, each with specific characteristics and use cases.
+
+### Stack
+
 - Last In, First Out (LIFO) principle
 - Elements are added and removed from the same end (top)
 - Main operations: push (add) and pop (remove)
-## Queue
+
+### Queue
+
 - First In, First Out (FIFO) principle
 - Elements are added at one end (rear) and removed from the other end (front)
 - Main operations: enqueue (add) and dequeue (remove)
+
 ### FIFO (First In, First Out)
-### Characteristic of a Queue
-- The first element added to the queue will be the first one to be removed
+
+Characteristic of a queue:
+- The first element added will be the first one removed
 - Also known as "First Come, First Served"
-- Gives more fairness than LIFO
+- Provides fairness compared to LIFO
+
 ### LIFO (Last In, First Out)
-### Characteristic of a Stack
-- The last element added to the stack will be the first one to be removed
+
+Characteristic of a stack:
+- The last element added will be the first one removed
 - Also known as "Last In, First Out"
-- Does not give same fairness as FIFO
-## What would we use a Queue and dequeue for in a real-life scenario programming?
-### Queue can be used to do things such as:
-1. Print Spooler: Managing print jobs sent to a printer.
-2. Task Scheduling: Managing processes in an operating system.
-3. Breadth-First Search: In graph algorithms for traversing or searching tree or graph data structures.
-4. Buffering: In streaming applications, like video streaming services.
-5. Customer Service Systems: Managing customer support tickets.
-# Resizing Array
-### A resizing array is a data structure that can grow or shrink in size as needed. It combines the benefits of arrays (constant-time access to elements) with the flexibility of dynamic sizing.
-## Array
-- Fixed size, determined at creation
+- Does not provide the same fairness as FIFO
+
+## Resizing Arrays
+
+Resizing arrays are data structures that can grow or shrink in size as needed, combining the benefits of arrays with dynamic sizing.
+
+### Array
+
+- Fixed size determined at creation
 - Fast access to elements (O(1) time complexity)
 - Efficient memory usage
 - Limited flexibility due to fixed size
-## Dynamic Array
+
+### Dynamic Array
+
 - Resizable: can grow or shrink as needed
 - O(1) average time complexity for element access
-- Flexible usage: allows for more flexible usage compared to static arrays
+- Flexible usage compared to static arrays
 - Typical implementation:
-  - Start with an initial capacity
-  - When the array is full, create a new array with larger capacity (often double)
-  - Copy elements from the old array to the new one
-  - Delete the old array
-### Key Operations:
-- Append: Add an element to the end (amortized O(1) time)
-- Get/Set: Access or modify an element at a specific index (O(1) time)
-- Insert: Add an element at a specific position (O(n) time in worst case)
-- Delete: Remove an element (O(n) time in worst case)
-- Resize: Increase or decrease capacity (O(n) time, but done infrequently)
-### Advantages:
-- Dynamic size adjustment
-- Efficient for most operations
-- No need to predict size in advance
-### Disadvantages:
-- Occasional performance hits during resizing
-- May waste some memory due to over-allocation
-### Common Implementations:
-- ArrayList in Java
-- List in Python
-- vector in C++
+  - Start with initial capacity
+  - When full, create a new array with larger capacity (often double)
+  - Copy elements from old to new array
+  - Delete old array
 
+## Linked Lists
 
-# Linked list
+Linked lists are linear data structures where elements are stored in nodes, each containing data and a reference to the next node.
 
-# trees 
+### Characteristics
 
-# Dictionaries
+- Dynamic size
+- Efficient insertion and deletion
+- Non-contiguous memory allocation
+- Sequential access (not random access)
 
-# Hashing and hash tables
+### Types
 
-# Tries
+1. Singly Linked List: Each node points to the next node
+2. Doubly Linked List: Each node points to both next and previous nodes
+3. Circular Linked List: Last node points back to the first node
 
+## Trees
+
+Trees are hierarchical data structures consisting of nodes connected by edges, forming a non-linear structure.
+
+### Characteristics
+
+- Root node (top of the tree)
+- Parent and child relationships between nodes
+- Leaves (nodes with no children)
+- Subtrees (trees within the main tree)
+
+### Common Types
+
+1. Binary Tree: Each node has at most two children
+2. Binary Search Tree (BST): Ordered binary tree
+3. AVL Tree: Self-balancing BST
+4. Red-Black Tree: Self-balancing BST with color properties
+5. B-Tree: Multiway search tree (commonly used in databases)
+
+## Dictionaries
+
+Dictionaries store key-value pairs, allowing efficient lookup, insertion, and deletion based on keys.
+
+### Characteristics
+
+- Keys are unique identifiers
+- Values can be any type of data
+- Fast average-case performance for operations
+
+### Common Operations
+
+- Insertion: Add a new key-value pair
+- Deletion: Remove a key-value pair
+- Lookup: Retrieve value associated with a given key
+
+## Hashing and Hash Tables
+
+Hashing maps keys to indices of an array, utilized in hash tables to efficiently store key-value pairs.
+
+### Key Concepts
+
+- Hash function: Maps keys to indices
+- Collisions: When two keys hash to the same index
+- Load factor: Ratio of occupied slots to total capacity
+
+## Tries
+
+Tries (prefix trees) are tree-like data structures used to store collections of strings efficiently.
+
+### Characteristics
+
+- Each node represents a string prefix
+- Children represent extensions of the prefix
+- Root node represents the empty string
+
+### Common Operations
+
+- Insertion: Add a new string to the trie
+- Deletion: Remove a string from the trie
+- Search: Find if a string exists in the trie
+- Prefix search: Find all strings with a given prefix
+
+### Advantages
+
+- Efficient prefix matching
+- Ordered storage of strings
+- Space efficiency for common prefixes
+
+### Disadvantages
+
+- Higher memory usage compared to hash tables
+- Slower operations for very large datasets
+
+### Use Cases
+
+- Autocomplete features
+- Spell checking
+- IP routing tables
+- Validating input against a set of known strings
