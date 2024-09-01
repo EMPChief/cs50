@@ -6,9 +6,10 @@
 
 int main(int argument_count, char *argument_values[])
 {
+    // Sjekk at antall argumenter er korrekt (programnavn + 2 strenger)
     if (argument_count != 3)
     {
-        printf("Usage: ./swap <string> <string>\n");
+        printf("Bruk: ./swap <string> <string>\n");
         return 1;
     }
 
@@ -16,24 +17,25 @@ int main(int argument_count, char *argument_values[])
     int length_first_string = strlen(argument_values[1]);
     int length_second_string = strlen(argument_values[2]);
 
-    // Bestem maksimal lengde
+    // Bestem maksimal lengde mellom de to strengene
     int max_length = length_first_string > length_second_string ? length_first_string : length_second_string;
 
-    // Lag modifiserbare kopier av strengene med samme lengde
+    // Lag modifiserbare kopier av strengene med samme lengde som den lengste
     char *first_string = malloc(max_length + 1);
     char *second_string = malloc(max_length + 1);
 
+    // Sjekk at minneallokeringen lykkes
     if (first_string == NULL || second_string == NULL)
     {
-        printf("Error: Memory allocation failed.\n");
+        printf("Feil: Minneallokering mislyktes.\n");
         return 1;
     }
 
-    // Kopier de opprinnelige strengene til de nye allokeringene
+    // Kopier de opprinnelige strengene til de nye allokerte minneområdene
     strcpy(first_string, argument_values[1]);
     strcpy(second_string, argument_values[2]);
 
-    // Alloker på nytt for å sikre at begge strengene er like lange
+    // Realloker minne for å sikre at begge strengene er like lange
     first_string = realloc(first_string, max_length + 1);
     second_string = realloc(second_string, max_length + 1);
 
@@ -47,9 +49,10 @@ int main(int argument_count, char *argument_values[])
         memset(second_string + length_second_string, '\0', max_length - length_second_string);
     }
 
-    printf("Before: %s %s\n", first_string, second_string);
+    // Skriv ut strengene før bytte
+    printf("Før: %s %s\n", first_string, second_string);
 
-    // Utfør byttet
+    // Utfør byttet mellom de to strengene
     for (int index = 0; index < max_length; index++)
     {
         char temp_character = first_string[index];
@@ -57,7 +60,8 @@ int main(int argument_count, char *argument_values[])
         second_string[index] = temp_character;
     }
 
-    printf("After: %s %s\n", first_string, second_string);
+    // Skriv ut strengene etter bytte
+    printf("Etter: %s %s\n", first_string, second_string);
 
     // Frigjør allokert minne
     free(first_string);

@@ -5,16 +5,21 @@
 
 int main(void)
 {
-    // Get user's input
-    string s = get_string("Before: ");
-    // Print user's input
+    // Hent brukerens inndata
+    string userInput = get_string("Before: ");
+
+    // Skriv ut teksten etter konvertering
     printf("After: ");
-    // start for loop to print user's input
-    for (int i = 0, n = strlen(s); i < n; i++)
+
+    // Start en for-løkke for å skrive ut brukerens inndata med store bokstaver
+    for (int currentIndex = 0, length = strlen(userInput); currentIndex < length; currentIndex++)
     {
-        // Print user's input
-        printf("%c", toupper(s[i]));
+        // Konverter hvert tegn til store bokstaver og skriv det ut
+        printf("%c", toupper(userInput[currentIndex]));
     }
-    // Print new line
+
+    // Skriv ut en ny linje etter å ha skrevet ut hele teksten
     printf("\n");
+
+    return 0;
 }

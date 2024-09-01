@@ -6,14 +6,21 @@
 
 int main(void)
 {
-    char *s = get_string("Before: ");
+    // Hent input-streng fra bruker
+    char *s = get_string("Før: ");
+
+    // Lag en peker t som peker til samme minneområde som s
     char *t = s;
-    
+
+    // Sjekk at strengen ikke er tom
     if (strlen(t) > 0)
     {
+        // Kapitaliser det første tegnet i strengen
         t[0] = toupper(t[0]);
     }
-    printf("After: %s\n", t);
+
+    // Skriv ut resultatet
+    printf("Etter: %s\n", t);
+
     return 0;
-    
 }

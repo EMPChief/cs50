@@ -1,17 +1,25 @@
 #include <stdio.h>
 
-void modifyValue(int x) {
-    x = x * 2;  // This modifies the local copy, not the original
-    printf("Inside function: %d\n", x);
+// Funksjon prototype
+void modifyValue(int x);
+
+int main()
+{
+    int num = 5;
+    printf("Før funksjonskall: %d\n", num);
+
+    // Kaller funksjonen som modifiserer den lokale kopien av x
+    modifyValue(num);
+
+    // Etter funksjonskallet forblir num uendret fordi kun kopien av verdien ble modifisert
+    printf("Etter funksjonskall: %d\n", num); // num forblir uendret
+
+    return 0;
 }
 
-int main() {
-    int num = 5;
-    printf("Before function call: %d\n", num);
-    
-    modifyValue(num);
-    
-    printf("After function call: %d\n", num);  // num remains unchanged
-    
-    return 0;
+// Funksjonen modifiserer verdien av den lokale kopien av x, ikke den opprinnelige variabelen
+void modifyValue(int x)
+{
+    x = x * 2; // Dette endrer bare kopien av x i funksjonen
+    printf("Inne i funksjonen: %d\n", x);
 }

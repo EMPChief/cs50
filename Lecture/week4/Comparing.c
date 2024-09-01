@@ -4,33 +4,40 @@
 
 int main(void)
 {
+    // Alloker minne for to strenger
     char *first = malloc(80 * sizeof(char));
     char *second = malloc(80 * sizeof(char));
-    
+
+    // Sjekk om minneallokeringen var vellykket
     if (first == NULL || second == NULL)
     {
-        printf("Memory allocation failed.\n");
+        printf("Minneallokering mislyktes.\n");
         return 1;
     }
 
-    printf("First: ");
+    // Les inn første streng fra brukeren
+    printf("Første streng: ");
     fgets(first, 80, stdin);
-    first[strcspn(first, "\n")] = 0;
+    first[strcspn(first, "\n")] = 0; // Fjern linjeskift
 
-    printf("Second: ");
+    // Les inn andre streng fra brukeren
+    printf("Andre streng: ");
     fgets(second, 80, stdin);
-    second[strcspn(second, "\n")] = 0;
+    second[strcspn(second, "\n")] = 0; // Fjern linjeskift
 
+    // Sammenlign strengene og skriv ut resultatet
     if (strcmp(first, second) == 0)
     {
-        printf("The strings are the same: %s | %s\n", first, second);
+        printf("Strengene er like: %s | %s\n", first, second);
     }
     else
     {
-        printf("The strings are different: %s | %s\n", first, second);
+        printf("Strengene er forskjellige: %s | %s\n", first, second);
     }
 
+    // Frigjør allokert minne
     free(first);
     free(second);
+
     return 0;
 }

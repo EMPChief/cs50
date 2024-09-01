@@ -66,6 +66,15 @@ Linked lists are linear data structures where elements are stored in nodes, each
 - Non-contiguous memory allocation
 - Sequential access (not random access)
 
+### Common Operations
+
+- Insertion: Add an element to the end of the list
+- Deletion: Remove an element from the list
+- Access: Retrieve an element from the list
+- Traversal: Iterate through the list
+- Search: Find an element in the list
+- -> : Points to the next node
+
 ### Types
 
 1. Singly Linked List: Each node points to the next node

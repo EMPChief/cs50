@@ -4,27 +4,34 @@
 
 int main(void)
 {
+    // Allokerer minne for to strenger
     char *first = malloc(80 * sizeof(char));
     char *second = malloc(80 * sizeof(char));
-    
+
+    // Sjekker om minneallokeringen var vellykket
     if (first == NULL || second == NULL)
     {
-        printf("Memory allocation failed.\n");
+        printf("Minneallokering mislyktes.\n");
         return 1;
     }
 
-    printf("First: ");
+    // Leser inn første streng fra brukeren
+    printf("Første: ");
     fgets(first, 80, stdin);
-    first[strcspn(first, "\n")] = 0;
+    first[strcspn(first, "\n")] = 0; // Fjerner linjeskift
 
-    printf("Second: ");
+    // Leser inn andre streng fra brukeren
+    printf("Andre: ");
     fgets(second, 80, stdin);
-    second[strcspn(second, "\n")] = 0;
+    second[strcspn(second, "\n")] = 0; // Fjerner linjeskift
 
-    printf("Memory address of first: %p\n", first);
-    printf("Memory address of second: %p\n", second);
+    // Skriver ut minneadressene til de allokerte strengene
+    printf("Minneadresse for første: %p\n", (void *)first);
+    printf("Minneadresse for andre: %p\n", (void *)second);
 
+    // Frigjør allokert minne
     free(first);
     free(second);
+
     return 0;
 }

@@ -4,18 +4,25 @@
 
 int main(void)
 {
-    // Get user's input
-    string s = get_string("Input:  ");
-    // Print user's input
-    printf("Output: %s\n", s);
-    // start for loop to print user's input
-    for (int i = 0, n = strlen(s); i < n; i++)
+    // Hent brukerens inndata
+    string userInput = get_string("Input:  ");
+
+    // Hent lengden av brukerens inndata
+    int inputLength = strlen(userInput);
+
+    // Skriv ut brukerens inndata
+    printf("Output: %s\n", userInput);
+
+    // Start en for-løkke for å skrive ut brukerens inndata tegn for tegn
+    for (int currentIndex = 0; currentIndex < inputLength; currentIndex++)
     {
-        // Print user's input
-        printf("%c", s[i]);
+        // Skriv ut hvert tegn fra brukerens inndata
+        printf("%c", userInput[currentIndex]);
     }
-    // Print new line
+
+    // Skriv ut en ny linje etter å ha skrevet ut alle tegnene
     printf("\n");
-    // return
+
+    // Returner 0 for å avslutte programmet med suksessstatuskode (0)
     return 0;
 }

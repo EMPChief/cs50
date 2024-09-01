@@ -2,27 +2,30 @@
 #include <stdio.h>
 #include <string.h>
 
-// Main function
+// Hovedfunksjon
 int main(void)
 {
-    // Get user's input
-    string phrase = get_string("Input a phrase: ");
-    // Get length of phrase
+    // Hent brukerens inndata
+    string phrase = get_string("Skriv inn en setning: ");
+
+    // Hent lengden av setningen
     int length = strlen(phrase);
-    // Check if phrase is alphabetic order
+
+    // Sjekk om setningen er i alfabetisk rekkefølge
     bool isAlphabeticOrder = true;
-    // Start for loop to check if phrase is alphabetic order
-    for (int i = 0; i < length - 1; i++)
+
+    // Start en for-løkke for å sjekke om setningen er i alfabetisk rekkefølge
+    for (int currentIndex = 0; currentIndex < length - 1; currentIndex++)
     {
-        // Check if phrase is alphabetic order using if statement
-        if (phrase[i] > phrase[i + 1])
+        // Sjekk om setningen er i alfabetisk rekkefølge med en if-setning
+        if (phrase[currentIndex] > phrase[currentIndex + 1])
         {
-            // Print if phrase is not alphabetic order and break for loop to end program
+            // Sett isAlphabeticOrder til false og bryt løkken for å avslutte programmet
             isAlphabeticOrder = false;
             break;
         }
     }
-    // Print if phrase is alphabetic order
-    printf("The phrase '%s' is %s an alphabetic order\n", phrase, isAlphabeticOrder ? "" : "not ");
-}
 
+    // Skriv ut om setningen er i alfabetisk rekkefølge eller ikke
+    printf("Setningen '%s' er %s i alfabetisk rekkefølge\n", phrase, isAlphabeticOrder ? "" : "ikke ");
+}

@@ -1,30 +1,34 @@
-
 #include <stdio.h>
 #include "cs50.h"
 
 int main(void)
 {
-    // Declare variables
+    // Deklarer variabel for størrelsen på arrayet
     int size;
-    // Prompt user for size of array and validate input is greater than 0 using do while loop
+
+    // Be brukeren om størrelsen på arrayet og valider at inndata er større enn 0 ved hjelp av do-while-løkke
     do
     {
-        size = get_int("Enter size of array: ");
-    }while(size <= 0);
-    // Declare array of integers with size given by user in do while loop
+        size = get_int("Skriv inn størrelse på array: ");
+    } while (size <= 0);
+
+    // Deklarer et array av heltall med størrelsen gitt av brukeren i do-while-løkken
     int doubling[size];
-    // Start for loop to get values for array elements using get_int function
-    for(int i = 0; i < size; i++)
+
+    // Start en for-løkke for å hente verdier for array-elementer ved hjelp av get_int-funksjonen
+    for (int index = 0; index < size; index++)
     {
-        // Get values for array elements using get_int function and validate input is greater than 0
-        doubling[i] = get_int("Array element: ");
+        // Hent verdier for array-elementer ved hjelp av get_int-funksjonen
+        doubling[index] = get_int("Array-element: ");
     }
-    // Start for loop to print doubled values of array elements using printf function and * 2 operator
-    for(int i = 0; i < size; i++)
+
+    // Start en for-løkke for å skrive ut doble verdier av array-elementer ved hjelp av printf-funksjonen og * 2-operatøren
+    for (int index = 0; index < size; index++)
     {
-        // Print doubled values of array elements using printf function
-        printf("%i\n", doubling[i] * 2);
+        // Skriv ut doble verdier av array-elementer ved hjelp av printf-funksjonen
+        printf("%i\n", doubling[index] * 2);
     }
-    // Return 0 to end program with success status code (0)
+
+    // Returner 0 for å avslutte programmet med suksessstatuskode (0)
     return 0;
 }

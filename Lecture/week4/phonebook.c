@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "cs50.h"
 
-// Function prototypes
+// Funksjonsprototyper
 void add_entry(const char *filename);
 void search_entry(const char *filename);
 void lookup_all(const char *filename);
@@ -13,59 +13,59 @@ void trim_newline(char *str);
 
 int main(void)
 {
-    // Ask the user what they want to do
-    char *user_action = get_string("What do you want to do? (add, search, lookup, exit): ");
+    // Spør brukeren hva de vil gjøre
+    char *user_action = get_string("Hva vil du gjøre? (legg til, søk, vis, avslutt): ");
 
     if (user_action == NULL)
     {
-        printf("Error: Could not allocate memory for user input.\n");
+        printf("Feil: Kunne ikke allokere minne for brukerens input.\n");
         return 1;
     }
 
     const char *filename = "phonebook.csv";
 
-    // Check if the file exists
+    // Sjekker om filen eksisterer
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("Error: Could not open file %s\n", filename);
+        printf("Feil: Kunne ikke åpne filen %s\n", filename);
         free(user_action);
         return 1;
     }
     fclose(file);
 
-    // Convert user action to lowercase
+    // Konverterer brukerens handling til små bokstaver
     user_action = toolower(user_action);
 
-    // Determine action based on user input
-    if (strcmp(user_action, "add") == 0)
+    // Bestemmer handling basert på brukerens input
+    if (strcmp(user_action, "legg til") == 0)
     {
         add_entry(filename);
     }
-    else if (strcmp(user_action, "search") == 0)
+    else if (strcmp(user_action, "søk") == 0)
     {
         search_entry(filename);
     }
-    else if (strcmp(user_action, "lookup") == 0)
+    else if (strcmp(user_action, "vis") == 0)
     {
         lookup_all(filename);
     }
-    else if (strcmp(user_action, "exit") == 0)
+    else if (strcmp(user_action, "avslutt") == 0)
     {
-        printf("Exiting...\n");
+        printf("Avslutter...\n");
     }
     else
     {
-        printf("Unknown command\n");
+        printf("Ukjent kommando\n");
     }
 
-    // Free allocated memory for user action
+    // Frigjør allokert minne for brukerens handling
     free(user_action);
 
     return 0;
 }
 
-// Function to convert a string to lowercase
+// Funksjon for å konvertere en streng til små bokstaver
 char *toolower(char *str)
 {
     for (char *ptr = str; *ptr; ++ptr)
@@ -75,7 +75,7 @@ char *toolower(char *str)
     return str;
 }
 
-// Function to remove trailing newline character from a string
+// Funksjon for å fjerne den avsluttende linjeskiftkarakteren fra en streng
 void trim_newline(char *str)
 {
     char *pos;
@@ -85,26 +85,26 @@ void trim_newline(char *str)
     }
 }
 
-// Function to add a new entry to the phonebook
+// Funksjon for å legge til en ny oppføring i telefonboken
 void add_entry(const char *filename)
 {
-    // Open the file in append mode
+    // Åpner filen i tillegg-modus
     FILE *file = fopen(filename, "a");
     if (file == NULL)
     {
-        printf("Error: Could not open file %s for writing\n", filename);
+        printf("Feil: Kunne ikke åpne filen %s for skriving\n", filename);
         return;
     }
 
-    // Get name and phone number from the user
-    char *name = get_string("Enter name: ");
-    char *phone_number = get_string("Enter phone number: ");
+    // Få navn og telefonnummer fra brukeren
+    char *name = get_string("Skriv inn navn: ");
+    char *phone_number = get_string("Skriv inn telefonnummer: ");
 
     if (name == NULL || phone_number == NULL)
     {
-        printf("Error: Could not allocate memory for user input.\n");
+        printf("Feil: Kunne ikke allokere minne for brukerens input.\n");
         fclose(file);
-        // Free memory if allocated
+        // Frigjør minne hvis allokert
         if (name != NULL)
             free(name);
         if (phone_number != NULL)
@@ -112,31 +112,31 @@ void add_entry(const char *filename)
         return;
     }
 
-    // Write the new entry to the file
+    // Skriv den nye oppføringen til filen
     fprintf(file, "%s,%s\n", name, phone_number);
 
     fclose(file);
-    // Free memory after we're done
+    // Frigjør minne etter at vi er ferdige
     free(name);
     free(phone_number);
 }
 
-// Function to search for an entry in the phonebook
+// Funksjon for å søke etter en oppføring i telefonboken
 void search_entry(const char *filename)
 {
-    // Open the file in read mode
+    // Åpner filen i lesemodus
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("Error: Could not open file %s for reading\n", filename);
+        printf("Feil: Kunne ikke åpne filen %s for lesing\n", filename);
         return;
     }
 
-    // Get the name to search for from the user
-    char *search_name = get_string("Enter name to search: ");
+    // Få navnet å søke etter fra brukeren
+    char *search_name = get_string("Skriv inn navn å søke etter: ");
     if (search_name == NULL)
     {
-        printf("Error: Could not allocate memory for user input.\n");
+        printf("Feil: Kunne ikke allokere minne for brukerens input.\n");
         fclose(file);
         return;
     }
@@ -146,10 +146,10 @@ void search_entry(const char *filename)
     char line[256];
     int found = 0;
 
-    // Read through each line in the file
+    // Leser gjennom hver linje i filen
     while (fgets(line, sizeof(line), file))
     {
-        // Split the line into name and phone number
+        // Deler linjen inn i navn og telefonnummer
         char *name = strtok(line, ",");
         char *phone_number = strtok(NULL, "\n");
 
@@ -158,52 +158,52 @@ void search_entry(const char *filename)
             trim_newline(name);
             name = toolower(name);
 
-            // Check if the name in the file matches the name we're searching for
+            // Sjekk om navnet i filen samsvarer med navnet vi søker etter
             if (strcmp(name, search_name) == 0)
             {
-                printf("Name: %s, Phone Number: %s\n", name, phone_number);
+                printf("Navn: %s, Telefonnummer: %s\n", name, phone_number);
                 found = 1;
                 break;
             }
         }
     }
 
-    // Provide feedback to the user if the entry was not found
+    // Gi tilbakemelding til brukeren hvis oppføringen ikke ble funnet
     if (!found)
     {
-        printf("No entry found for %s\n", search_name);
+        printf("Ingen oppføring funnet for %s\n", search_name);
     }
 
     fclose(file);
-    // Free memory after we're done
+    // Frigjør minne etter at vi er ferdige
     free(search_name);
 }
 
-// Function to look up all entries in the phonebook
+// Funksjon for å vise alle oppføringer i telefonboken
 void lookup_all(const char *filename)
 {
-    // Open the file in read mode
+    // Åpner filen i lesemodus
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        printf("Error: Could not open file %s for reading\n", filename);
+        printf("Feil: Kunne ikke åpne filen %s for lesing\n", filename);
         return;
     }
 
     char line[256];
 
-    // Read through each line in the file
+    // Leser gjennom hver linje i filen
     while (fgets(line, sizeof(line), file))
     {
-        // Split the line into name and phone number
+        // Deler linjen inn i navn og telefonnummer
         char *name = strtok(line, ",");
         char *phone_number = strtok(NULL, "\n");
 
-        // Print the name and phone number to the user
+        // Skriv ut navn og telefonnummer til brukeren
         if (name != NULL && phone_number != NULL)
         {
             trim_newline(name);
-            printf("Name: %s, Phone Number: %s\n", name, phone_number);
+            printf("Navn: %s, Telefonnummer: %s\n", name, phone_number);
         }
     }
 

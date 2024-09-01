@@ -1,21 +1,31 @@
 #include <stdio.h>
 
-int globalVar = 10;  // Global scope
+// Globale variabeler er tilgjengelige overalt i filen
+int globalVar = 10; // Globalt omfang
 
-void exampleFunction() {
-    int localVar = 20;  // Local scope
-    printf("Local: %d, Global: %d\n", localVar, globalVar);
-    
+// Funksjon som demonstrerer lokal og blokk-spesifikk variabelomfang
+void exampleFunction()
+{
+    // Lokale variabler er bare tilgjengelige innenfor funksjonen de er definert i
+    int localVar = 20; // Lokalt omfang
+    // Skriver ut den lokale variabelen og den globale variabelen
+    printf("Lokal: %d, Global: %d\n", localVar, globalVar);
+
     {
-        int blockVar = 30;  // Block scope
-        printf("Block: %d\n", blockVar);
+        // Blokk-spesifikke variabler er kun tilgjengelige innenfor den blokken de er definert i
+        int blockVar = 30; // Blokk omfang
+        // Skriver ut den blokk-spesifikke variabelen
+        printf("Blokk: %d\n", blockVar);
     }
-    // blockVar is not accessible here
+    // blockVar er ikke tilgjengelig her etter blokkens slutt
 }
 
-int main() {
+// Hovedfunksjon
+int main()
+{
     exampleFunction();
-    // localVar is not accessible here
+    // localVar er ikke tilgjengelig her etter funksjonskallet
+    // Skriver ut den globale variabelen
     printf("Global: %d\n", globalVar);
     return 0;
 }

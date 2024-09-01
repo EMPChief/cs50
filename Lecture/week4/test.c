@@ -6,36 +6,39 @@
 
 int main(void)
 {
-    // Get input string from user
-    char *inputString = get_string("Before: ");
+    // Hent input-streng fra bruker
+    char *inputString = get_string("Før: ");
+
+    // Sjekk at minneallokeringen lykkes
     if (inputString == NULL)
     {
-        printf("Memory allocation failed.\n");
+        printf("Minneallokering mislyktes.\n");
         return 1;
     }
 
-    // Allocate memory for the output string
-    char *outputString = malloc(strlen(inputString) + 1);
+    // Alloker minne for utdata-strengen
+    char *outputString = malloc(strlen(inputString) + 1); // +1 for null-terminator
+    // Sjekk at minneallokeringen lykkes
     if (outputString == NULL)
     {
-        printf("Memory allocation failed.\n");
-        free(inputString);
+        printf("Minneallokering mislyktes.\n");
+        free(inputString); // Frigjør minnet for input-strengen før vi avslutter
         return 2;
     }
 
-    // Copy the input string to the output string
+    // Kopier input-strengen til utdata-strengen
     strcpy(outputString, inputString);
-    
-    // Capitalize the first character of the output string if it is not empty
+
+    // Kapitaliser det første tegnet av utdata-strengen hvis den ikke er tom
     if (strlen(outputString) > 0)
     {
         outputString[0] = toupper(outputString[0]);
     }
 
-    // Print the result
-    printf("After: %s\n", outputString);
+    // Skriv ut resultatet
+    printf("Etter: %s\n", outputString);
 
-    // Free allocated memory
+    // Frigjør allokert minne
     free(outputString);
     free(inputString);
 
