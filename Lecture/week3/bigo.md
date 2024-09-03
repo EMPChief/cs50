@@ -56,3 +56,4 @@ Summary
 * O(n^2): Quadratic time, less efficient, often seen in simpler algorithms.
 * O(n^3): Cubic time, even less efficient, seen in more complex operations.
 * O(n!): Factorial time, extremely inefficient, typically an upper bound for exhaustive search algorithms.
+* O(N/K): n is the size of the array, k is the number of buckets.
