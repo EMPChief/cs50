@@ -4,20 +4,51 @@ import sys
 
 def main():
 
-    # TODO: Check for command-line usage
+    # TODO: Sjekk om kommando-linje bruk er riktig
     if len(sys.argv) != 3:
         print("Usage: python dna.py data.csv sequence.txt")
         sys.exit(1)
 
-    # TODO: Read database file into a variable
-    
-    # TODO: Read DNA sequence file into a variable
+    # TODO: Les databasefilen inn i en variabel
+    # Åpne CSV-filen som er gitt som argument og les inn dataene.
+    # Bruk csv.reader for å parse filen og lagre informasjonen i en variabel.
+    # Denne variabelen skal inneholde informasjon om personer og deres STR-frekvenser.
+    with open(sys.argv[1], "r") as database_file:
+        reader = csv.DictReader(database_file)
+        database = [row for row in reader]
 
-    # TODO: Find longest match of each STR in DNA sequence
+    # TODO: Les DNA-sekvensfilen inn i en variabel
+    # Åpne tekstfilen som er gitt som argument og les inn DNA-sekvensen.
+    # Lagre sekvensen som en enkel streng i en variabel.
+    with open(sys.argv[2], "r") as sequence_file:
+        sequence = sequence_file.read()
 
-    # TODO: Check database for matching profiles
+    # TODO: Finn lengste sekvens av hver STR i DNA-sekvensen
+    # For hver STR i databasen, kall longest_match-funksjonen
+    # for å finne lengden på den lengste sekvensen av STR-en i DNA-sekvensen.
+    # Lagre resultatene i en variabel for senere sammenligning.
+    str_counts = {}
+    for key in database[0].keys():
+        if key == "name":
+            continue
+        str_counts[key] = longest_match(sequence, key)
 
-    return
+    # TODO: Sjekk databasen for matchende profiler
+    # Sammenlign STR-tellene med dataene i databasen for å finne en match.
+    # Hvis en match blir funnet, skriv ut navnet til personen som matcher.
+    for person in database:
+        match = True
+        for key in person.keys():
+            if key == "name":
+                continue
+            if int(person[key]) != str_counts[key]:
+                match = False
+                break
+        if match:
+            print(person["name"])
+            return
+
+    print("No match")
 
 
 def longest_match(sequence, subsequence):
@@ -54,7 +85,7 @@ def longest_match(sequence, subsequence):
         # Update most consecutive matches found
         longest_run = max(longest_run, count)
 
-    # After checking for runs at each character in seqeuence, return longest run found
+    # After checking for runs at each character in sequence, return longest run found
     return longest_run
 
 

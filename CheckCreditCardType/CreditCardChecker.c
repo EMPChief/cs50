@@ -3,88 +3,88 @@
 
 int main(void)
 {
-    // Print prompt to get credit card number from user
+    // Skriv ut en oppfordring for å få kredittkortnummer fra brukeren
     printf("Enter your credit card number: ");
 
-    // Declare a variable to store the credit card number
+    // Deklarer en variabel for å lagre kredittkortnummeret
     long card_number;
 
-    // Get credit card number from user, with validation to ensure it's not negative
+    // Hent kredittkortnummer fra brukeren, med validering for å sikre at det ikke er negativt
     do
     {
-        // Use get_long to obtain a long integer from the user
+        // Bruk get_long for å få et langt heltall fra brukeren
         card_number = get_long("Enter your credit card number: ");
     }
     while (card_number < 0);
 
-    // Variables for sum and count to keep track of the algorithm
+    // Variabler for sum og antall for å følge algoritmen
     int sum = 0;
     int count = 0;
 
-    // Temporary variable to store the original card number for processing
+    // Midlertidig variabel for å lagre det originale kortnummeret for behandling
     long temp = card_number;
 
-    // Loop to process each digit of the card number
+    // Sløyfe for å behandle hvert siffer av kortnummeret
     while (temp > 0)
     {
-        // Get the last digit of the card number
+        // Få det siste sifferet av kortnummeret
         int digit = temp % 10;
 
-        // Check if the digit is at an even or odd position
+        // Sjekk om sifferet er på en jevn eller odd posisjon
         if (count % 2 == 0)
         {
-            // If even, add the digit to the sum
+            // Hvis jevnt, legg til sifferet til summen
             sum += digit;
         }
         else
         {
-            // If odd, double the digit and add its digits to the sum
+            // Hvis odd, dobbel sifferet og legg til sifrene til summen
             int product = 2 * digit;
             sum += product % 10 + product / 10;
         }
 
-        // Move to the next digit by dividing the temporary variable
+        // Gå til neste siffer ved å dele den midlertidige variabelen
         temp /= 10;
 
-        // Increment the count to keep track of the position
+        // Øk antallet for å følge med på posisjonen
         count++;
     }
 
-    // Check if the sum is divisible by 10
+    // Sjekk om summen er delelig med 10
     if (sum % 10 == 0)
     {
-        // Check if the card number length and starting digits match AMEX
+        // Sjekk om kortnummerets lengde og start sifre matcher AMEX
         if ((count == 15 || count == 16) && (card_number / 10000000000000 == 34 || card_number / 10000000000000 == 37))
         {
-            // Print AMEX for American Express
+            // Skriv ut AMEX for American Express
             printf("AMEX\n");
         }
-        // Check if the card number length and starting digits match MASTERCARD
+        // Sjekk om kortnummerets lengde og start sifre matcher MASTERCARD
         else if (count == 16 && (card_number / 100000000000000 == 51 || card_number / 100000000000000 == 52 ||
                                 card_number / 100000000000000 == 53 || card_number / 100000000000000 == 54 ||
                                 card_number / 100000000000000 == 55))
         {
-            // Print MASTERCARD for MasterCard
+            // Skriv ut MASTERCARD for MasterCard
             printf("MASTERCARD\n");
         }
-        // Check if the card number length and starting digits match VISA
+        // Sjekk om kortnummerets lengde og start sifre matcher VISA
         else if ((count == 13 || count == 16) && (card_number / 1000000000000 == 4 || card_number / 1000000000000000 == 4))
         {
-            // Print VISA for Visa
+            // Skriv ut VISA for Visa
             printf("VISA\n");
         }
-        // If it doesn't match any known card types, print INVALID
+        // Hvis det ikke matcher noen kjente korttyper, skriv ut INVALID
         else
         {
             printf("INVALID\n");
         }
     }
-    // If the sum is not divisible by 10, print INVALID
+    // Hvis summen ikke er delelig med 10, skriv ut INVALID
     else
     {
         printf("INVALID\n");
     }
 
-    // Return 0 to indicate successful program execution
+    // Returner 0 for å indikere vellykket programkjøring
     return 0;
 }

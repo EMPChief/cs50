@@ -1,0 +1,52 @@
+-- Hent navnet på alle sanger fra databasen
+-- Denne spørringen returnerer en liste med navnene på alle sanger som er lagret i tabellen 'songs'.
+-- Den bruker en enkel SELECT-setning for å hente alle poster fra kolonnen 'name'.
+SELECT name FROM songs;
+
+-- Hent navnet på alle sanger, sortert etter tempo i stigende rekkefølge
+-- Denne spørringen returnerer en liste med navnene på alle sanger, sortert i stigende rekkefølge etter 'tempo'.
+-- 'ORDER BY tempo ASC' sorterer resultatene med laveste tempo først.
+SELECT name FROM songs
+ORDER BY tempo ASC;
+
+-- Hent navnet på de 5 lengste sangene, sortert etter lengde i synkende rekkefølge
+-- Denne spørringen returnerer navnene på de 5 sangene med den lengste varigheten, sortert fra lengst til kortest.
+-- 'ORDER BY duration_ms DESC' sorterer resultatene etter varighet i synkende rekkefølge, og 'LIMIT 5' begrenser resultatene til de 5 første.
+SELECT name FROM songs
+ORDER BY duration_ms DESC
+LIMIT 5;
+
+-- Hent navnet på sanger som har danceability, energy og valence høyere enn 0.75
+-- Denne spørringen returnerer navnene på sanger som har verdier for 'danceability', 'energy' og 'valence' som er høyere enn 0.75.
+-- Dette kan brukes til å finne sanger med høyt nivå av dansbarhet, energi og positivitet.
+SELECT name FROM songs
+WHERE danceability > 0.75 AND energy > 0.75 AND valence > 0.75;
+
+-- Beregn gjennomsnittlig energi for alle sanger i databasen
+-- Denne spørringen beregner den gjennomsnittlige verdien for kolonnen 'energy' over alle sanger i tabellen.
+-- 'AVG(energy)' returnerer en enkelt verdi som representerer det aritmetiske gjennomsnittet.
+SELECT AVG(energy) FROM songs;
+
+-- Hent navnet på sanger som er laget av Post Malone
+-- Denne spørringen bruker en JOIN for å koble sammen 'songs' og 'artists' tabellene basert på 'artist_id'.
+-- Den filtrerer resultatene for å vise sanger hvor artistens navn er 'Post Malone'.
+SELECT s.name FROM songs s
+JOIN artists a
+ON s.artist_id = a.id
+WHERE a.name = 'Post Malone';
+
+-- Beregn gjennomsnittlig energi for sanger som er laget av Drake
+-- Denne spørringen bruker en subquery for å finne artist_id for Drake i 'artists'-tabellen.
+-- Den bruker deretter denne artist_id til å beregne gjennomsnittlig energi for sanger laget av Drake.
+-- Resultatet er en enkelt verdi som representerer den gjennomsnittlige energien for Drakes sanger.
+SELECT AVG(energy) as avg_energy
+FROM songs
+WHERE artist_id IN (
+  SELECT id FROM artists WHERE name = 'Drake'
+);
+
+-- Hent navnet på sanger som inneholder 'feat.' i navnet
+-- Denne spørringen returnerer navnene på sanger hvor tittelen inneholder teksten 'feat.'.
+-- 'LIKE '%feat%'' brukes til å søke etter sanger som har 'feat.' som en del av tittelen, som ofte indikerer en gjesteartist.
+SELECT name FROM songs
+WHERE name LIKE '%feat%';

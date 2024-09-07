@@ -12,8 +12,13 @@ Week 6 covers Python basics and comparisons to C, focusing on core programming c
   - Python has built-in support for high-level data structures like lists and dictionaries
   - Python has a simpler syntax compared to C
   - Python is interpreted, while C is compiled
-  - Python is an interpreted language, while C is a compiled language
   - Python is a general-purpose language, while C is a low-level language
+- Additional Python features:
+  - Automatic memory management through garbage collection
+  - Built-in support for object-oriented programming
+  - Extensive standard library and third-party packages
+  - Dynamic typing allows for rapid development and flexibility
+  - Simple syntax makes it easy to read and write code quickly
 
 ## Speller
 - dictionary.py shows how little you need to do in Python vs C
@@ -30,8 +35,11 @@ Week 6 covers Python basics and comparisons to C, focusing on core programming c
   - C implementation allows students to understand memory allocation and management
   - C version demonstrates algorithmic efficiency and optimization techniques
   - Python abstracts away these low-level details, potentially hindering understanding of fundamental CS concepts
+- Alternative approaches:
+  - Using Cython to bridge the gap between Python and C performance
+  - Implementing spell-checker in Python using optimized libraries
 
-# Filter
+## Filter
 - blur.py shows the same problem as speller:
   - You would not learn what is happening behind the scenes
 - Similar reasons for not using Python:
@@ -41,6 +49,9 @@ Week 6 covers Python basics and comparisons to C, focusing on core programming c
   - Understanding of how images are represented in memory
   - Hands-on experience with pointer arithmetic and memory manipulation
   - Direct control over pixel values and image processing algorithms
+- Alternative approaches:
+  - Using OpenCV for image processing in Python
+  - Implementing filters using NumPy arrays in Python
 
 ## Face Recognition
 - Many people have created face recognition software in Python
@@ -67,7 +78,7 @@ Week 6 covers Python basics and comparisons to C, focusing on core programming c
   - Focus on understanding underlying principles rather than specific language syntax
   - This approach prepares students for adapting to new technologies and languages throughout their careers
 
-# Python Core Concepts
+## Python Core Concepts
 
 ## Functions
 - Functions are reusable blocks of code that perform a specific task
