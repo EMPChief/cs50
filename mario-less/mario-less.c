@@ -9,7 +9,7 @@ int main(void)
     // Be brukeren om høyden på pyramiden (1-8)
     do
     {
-        printf("Skriv inn høyden på pyramiden (1-8): ");
+        printf("Write the height of the pyramid (1-8): ");
         fgets(input, sizeof(input), stdin);
     }
     while (sscanf(input, "%d", &height) != 1 || height < 1 || height > 8);
