@@ -1,13 +1,11 @@
 # CS50X Special AI lecture
 
 ## Welcome and Introduction
-
 - Overview of the lecture's objectives
 - Importance of AI in modern computing and its impact on various fields
 - Brief history of AI development and major milestones
 
 ## Image Generation
-
 - Definition of AI-powered image generation
 - Key technologies:
   - Generative Adversarial Networks (GANs)
@@ -24,7 +22,6 @@
 - Ethical considerations in AI-generated imagery
 
 ## ChatGPT
-
 - Introduction to ChatGPT and its underlying GPT (Generative Pre-trained Transformer) architecture
 - Key features of ChatGPT:
   - Natural language understanding and generation
@@ -41,7 +38,6 @@
   - Impact on jobs and human-AI collaboration
 
 ## Prompt Engineering
-
 - Definition of prompt engineering in the context of AI
 - Importance of well-crafted prompts for optimal AI performance
 - Key principles of effective prompt engineering:
@@ -59,7 +55,6 @@
 - Best practices and common pitfalls in prompt engineering
 
 ## CS50.ai
-
 - Overview of CS50's AI tools and resources
 - Integration of AI in computer science education:
   - AI-powered coding assistance
@@ -75,7 +70,6 @@
   - Preparation for AI-augmented development environments
 
 ## Generative AI
-
 - Definition and scope of generative AI
 - Key technologies in generative AI:
   - Transformer models
@@ -93,7 +87,6 @@
 - Future directions and potential impacts on creative industries
 
 ## Decision Trees
-
 - Fundamental concept of decision trees in AI and machine learning
 - Structure of decision trees:
   - Nodes, branches, and leaves
@@ -112,7 +105,6 @@
   - Marketing (customer segmentation)
 
 ## Minimax
-
 - Introduction to the minimax algorithm in game theory and AI
 - Core concepts:
   - Game tree representation
@@ -131,7 +123,6 @@
   - Decision making in adversarial environments
 
 ## Machine Learning
-
 - Definition and types of machine learning:
   - Supervised learning
   - Unsupervised learning
@@ -154,7 +145,6 @@
   - Computer vision
 
 ## Deep Learning
-
 - Introduction to deep learning and neural networks
 - Structure of neural networks:
   - Input, hidden, and output layers
@@ -175,7 +165,6 @@
   - Drug discovery
 
 ## Large Language Models
-
 - Definition and characteristics of large language models
 - Evolution of language models:
   - From n-grams to transformers
@@ -199,7 +188,6 @@
   - Potential misuse and disinformation
 
 ## Hallucinations
-
 - Definition of AI hallucinations or confabulations
 - Causes of AI hallucinations:
   - Limitations in training data
@@ -219,7 +207,6 @@
   - Need for human oversight and interpretation
 
 ## Additional Considerations
-
 - Ethical implications of AI development and deployment
 - AI governance and regulation
 - AI explainability and interpretability
