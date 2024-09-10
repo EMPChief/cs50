@@ -162,12 +162,30 @@
   - Regular security audits and updates
 - Best practices for writing secure SQL code
 - Importance of ongoing education and awareness about security threats
-## Begin Transactions, rollback, commit
-- Begin a transaction is a way to start a new database transaction
-- for example: BEGIN TRANSACTION
-- Rollback is a way to undo the changes made to the database
-- commit is a way to save the changes made to the database
-- This is a safer way to save changes to the database
-- So if you make a mistake, you can rollback to the previous state
-- and not hurt your database and lose everything you made by
-- stupid mistakes
+
+## Begin Transactions, Rollback, Commit
+- Transactions in SQL: a sequence of database operations treated as a single unit of work
+- BEGIN TRANSACTION: a way to start a new database transaction
+  - Example: BEGIN TRANSACTION;
+- ROLLBACK: a way to undo the changes made to the database within a transaction
+  - Used when errors occur or when changes are not desired
+  - Example: ROLLBACK;
+- COMMIT: a way to save the changes made to the database within a transaction
+  - Permanently applies all changes made during the transaction
+  - Example: COMMIT;
+- Benefits of using transactions:
+  - Ensures data integrity by treating multiple operations as a single unit
+  - Provides a safer way to make changes to the database
+  - Allows for easy recovery from errors or mistakes
+- Use case scenario:
+  - Begin a transaction before making multiple related changes
+  - If a mistake is made, use ROLLBACK to revert to the previous state
+  - If all operations are successful, use COMMIT to save the changes
+- Importance in preventing data loss:
+  - Protects against partial updates in case of system failures
+  - Allows for careful review of changes before committing
+  - Helps maintain database consistency in multi-user environments
+- Best practices:
+  - Keep transactions as short as possible to reduce lock contention
+  - Always include error handling to manage potential ROLLBACK scenarios
+  - Use transactions for operations that must be completed together
