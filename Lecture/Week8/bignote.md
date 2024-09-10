@@ -162,3 +162,12 @@
   - Regular security audits and updates
 - Best practices for writing secure SQL code
 - Importance of ongoing education and awareness about security threats
+## Begin Transactions, rollback, commit
+- Begin a transaction is a way to start a new database transaction
+- for example: BEGIN TRANSACTION
+- Rollback is a way to undo the changes made to the database
+- commit is a way to save the changes made to the database
+- This is a safer way to save changes to the database
+- So if you make a mistake, you can rollback to the previous state
+- and not hurt your database and lose everything you made by
+- stupid mistakes
