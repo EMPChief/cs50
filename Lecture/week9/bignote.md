@@ -1,11 +1,19 @@
 # CS50x 2024 - Lecture 8 - HTML, CSS, JavaScript
 
 ## Introduction
-- Overview of Web Development: HTML, CSS, and JavaScript form the foundation of modern websites
-- Importance: Define structure, style, and interactivity of web pages
-- Brief History: Evolution from static websites to dynamic, responsive applications
-- Current trends: Mobile-first design, progressive web apps, serverless architecture
-- Future outlook: AI-powered web development, augmented reality integration
+- **Overview of Web Development**:
+  - HTML, CSS, and JavaScript form the foundation of modern websites.
+- **Importance**:
+  - Define structure (HTML), style (CSS), and interactivity (JavaScript) of web pages.
+- **Brief History**:
+  - Evolution from static websites to dynamic, responsive applications.
+- **Current Trends**:
+  - **Mobile-First Design**: Prioritizing mobile devices in web design.
+  - **Progressive Web Apps**: Web applications that offer a native app-like experience.
+  - **Serverless Architecture**: Cloud-based solutions that abstract server management.
+- **Future Outlook**:
+  - **AI-Powered Web Development**: Integration of artificial intelligence to enhance user experiences and automate tasks.
+  - **Augmented Reality Integration**: Incorporating AR into web applications for immersive experiences.
 
 ## The Internet
 - **Global Network of Interconnected Computers**: A vast system connecting millions of devices worldwide.
