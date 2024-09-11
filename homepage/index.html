@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - My Modern Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Header seksjon med gradient bakgrunn -->
+      <header
+        class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-5"
+      >
+        <div class="container text-center">
+          <h1 class="display-4 fw-bold mb-4">Welcome to My Modern Website</h1>
+          <p class="lead">Your journey starts here</p>
+        </div>
+      </header>
+
+      <!-- Navigasjonslinje -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Home</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javaplay.html">JavaPlay</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="resume.html">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Innhold seksjon med tekst og bilde -->
+      <div class="bg-light py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="mb-4">Bjørn-Magne Personlige Website</h2>
+              <p class="lead">Min personlige webside for pset8.</p>
+            </div>
+            <div class="col-md-6">
+              <img
+                src="https://via.placeholder.com/400x250"
+                alt="Service Image"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS fil -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

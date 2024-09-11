@@ -1,0 +1,119 @@
+/* Generelle stiler */
+body {
+  background-color: #f4f4f9; /* Lys bakgrunnsfarge for siden */
+  font-family: "Arial", sans-serif; /* Skrifttype for hele siden */
+}
+
+h1 {
+  color: #333; /* Mørk tekstfarge for overskrifter */
+  text-align: center; /* Sentrer overskrifter */
+  margin: 20px 0; /* Margin rundt overskrifter */
+}
+
+.navbar {
+  margin: 20px 0; /* Margin over og under navigasjonslinjen */
+}
+
+.nav-link {
+  color: #007bff; /* Blå farge for navigasjonslenker */
+  font-weight: bold; /* Fet tekst for navigasjonslenker */
+}
+
+/* Kortstiler */
+.card {
+  border: none; /* Ingen ramme for kort */
+  border-radius: 15px; /* Runde hjørner for kort */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lett skygge for kort */
+}
+
+.card-body {
+  padding: 2rem; /* Polstring inni kortet */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Skriftstørrelse for korttitler */
+  color: #333; /* Mørk tekstfarge for korttitler */
+}
+
+.card-text {
+  color: #666; /* Middels grå farge for korttekst */
+}
+
+.list-unstyled {
+  list-style-type: none; /* Fjerner standard liste-styling */
+  padding-left: 0; /* Fjerner venstre padding */
+}
+
+/* Bunntekststiler */
+.footer {
+  background-color: #333; /* Mørk bakgrunnsfarge for bunntekst */
+  color: #fff; /* Hvit tekstfarge for bunntekst */
+  padding: 1rem 0; /* Polstring inni bunnteksten */
+  text-align: center; /* Sentrer tekst i bunnteksten */
+}
+
+.footer ul {
+  list-style-type: none; /* Fjerner standard liste-styling for bunntekstlenker */
+  padding-left: 0; /* Fjerner venstre padding */
+}
+
+.footer li {
+  display: inline-block; /* Viser bunntekstlisteelementer på linje */
+  margin-right: 20px; /* Margin mellom bunntekstlisteelementer */
+}
+
+.footer a {
+  color: #fff; /* Hvit farge for bunntekstlenker */
+  text-decoration: none; /* Fjerner understrekning fra bunntekstlenker */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Understreker bunntekstlenker ved hover */
+}
+
+/* Responsiv stil */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* Stabler kolonner vertikalt på mindre skjermer */
+  }
+
+  .col-md-8,
+  .col-md-4 {
+    width: 100%; /* Full bredde for kolonner på mindre skjermer */
+  }
+}
+
+/* Ekstra stiler for JavaPlay */
+.container-fluid {
+  max-width: 1200px; /* Maksimal bredde for container */
+  margin: auto; /* Sentrer container */
+}
+
+.text-center {
+  text-align: center; /* Sentrer tekst */
+}
+
+.my-5 {
+  margin-top: 5rem; /* Margin over elementet */
+  margin-bottom: 5rem; /* Margin under elementet */
+}
+
+.btn {
+  transition: all 0.3s ease; /* Glidende overgang for knapp-effekter */
+}
+
+.btn:hover {
+  transform: scale(1.05); /* Litt større knapp ved hover */
+}
+
+.form-select {
+  width: 100%; /* Full bredde for form-select elementer */
+}
+
+.alert {
+  position: fixed; /* Fast posisjon for varsler */
+  top: 50%; /* Sentrer vertikalt */
+  left: 50%; /* Sentrer horisontalt */
+  transform: translate(-50%, -50%); /* Juster posisjon for sentrering */
+  z-index: 1030; /* Sørg for at varsler er over andre elementer */
+}

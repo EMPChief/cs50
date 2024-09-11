@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta-informasjon om tegnsett og visningsportinnstillinger for responsivitet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Sidetittel som vises i nettleserfanen -->
+    <title>Computer Trivia</title>
+    
+    <!-- Lenke til ekstern stilark -->
+    <link href="styles.css" rel="stylesheet">
+    
+    <!-- Lenke til ekstern JavaScript-fil -->
+    <script>
+        
+    </script>
+</head>
+<body>
+    <!-- Overskriftsseksjon med tittel på quiz -->
+    <div class="header">
+        <h1>Computer Trivia</h1>
+    </div>
+
+    <!-- Hovedbeholder som inneholder alle deler av quizzen -->
+    <div class="container">
+        
+        <!-- Seksjon for flervalgsspørsmål -->
+        <div class="section">
+            <h2>Part 1: Multiple Choice</h2>
+            <hr>
+            <h3>Question 1: Which programming language is known as the father of object-oriented programming?</h3>
+            <button class="option incorrect">Python</button>
+            <button class="option incorrect">Java</button>
+            <button class="option correct">Simula</button>
+            <button class="option incorrect">C++</button>
+            <p id="feedback1"></p>
+        </div>
+
+        <!-- Seksjon for fritekstsvar -->
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <h3>Which popular web browser was originally called 'Mosaic' before being renamed due to legal issues?</h3>
+            <input type="text" id="answer" placeholder="Enter your answer here...">
+            <button id="check">Check Answer</button>
+            <p id="feedback2"></p>
+        </div>
+    </div>
+</body>
+</html>

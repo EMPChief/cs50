@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaPlay | Interactive Tools</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Header seksjon -->
+      <header
+        class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-5"
+      >
+        <div class="container text-center">
+          <h1 class="display-4 fw-bold mb-4">JavaPlay</h1>
+          <p class="lead">Interactive tools for you to play with!</p>
+        </div>
+      </header>
+
+      <!-- Navigasjonslinje -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Home</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javaplay.html">JavaPlay</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="resume.html">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hovedinnhold -->
+      <main class="bg-white py-5">
+        <div class="container">
+          <div class="row">
+            <!-- Kalkulator seksjon -->
+            <div class="col-md-8">
+              <h2 class="mb-4">Calculator</h2>
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <!-- Input felt for tall og knapper for operasjoner -->
+                  <input
+                    type="number"
+                    id="num1"
+                    class="form-control mb-2"
+                    placeholder="Number 1"
+                  />
+                  <input
+                    type="number"
+                    id="num2"
+                    class="form-control mb-2"
+                    placeholder="Number 2"
+                  />
+                  <button class="btn btn-primary me-2" id="add">Add</button>
+                  <button class="btn btn-secondary me-2" id="subtract">
+                    Subtract
+                  </button>
+                  <button class="btn btn-success me-2" id="multiply">
+                    Multiply
+                  </button>
+                  <button class="btn btn-danger" id="divide">Divide</button>
+                  <!-- Resultat visning -->
+                  <p id="result" class="mt-3"></p>
+                </div>
+              </div>
+
+              <h2 class="mt-4 mb-4">Increment/Decrement</h2>
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <!-- Knapp for å øke og redusere en teller -->
+                  <button class="btn btn-warning me-2" id="decrement">-</button>
+                  <span id="count" class="h4">0</span>
+                  <button class="btn btn-warning ms-2" id="increment">+</button>
+                </div>
+              </div>
+            </div>
+            <!-- Temperaturkonverterer seksjon -->
+            <div class="col-md-4">
+              <h2 class="mb-4">Temperature Converter</h2>
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <!-- Velg enheter for temperaturkonvertering og input felt for verdier -->
+                  <select class="form-select mb-2" id="tempFrom">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                  </select>
+                  <input
+                    type="number"
+                    id="tempFromValue"
+                    class="form-control mb-2"
+                    placeholder="Value to convert"
+                  />
+                  <select class="form-select mb-2" id="tempTo">
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="celsius">Celsius</option>
+                  </select>
+                  <input
+                    type="number"
+                    id="tempToValue"
+                    class="form-control mb-2"
+                    placeholder="Converted value"
+                  />
+                  <button class="btn btn-primary" id="convertTemp">
+                    Convert
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer seksjon -->
+      <footer class="bg-dark text-white py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <h3>Contact Information</h3>
+              <p>Email: bjornmagnekristensen1999@gmail.com</p>
+              <p>Phone: +secret</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap JS og lokal JS fil -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="javaplay.js"></script>
+  </body>
+</html>
