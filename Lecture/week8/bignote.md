@@ -1,191 +1,203 @@
 # CS50x 2024 - Lecture 7 - SQL
 
 ## Introduction
-- Overview of the lecture on SQL (Structured Query Language)
-- Importance of databases in modern computing
-- Brief history of SQL and its role in data management
+- **Overview**: Introduction to SQL (Structured Query Language), essential for managing and manipulating databases.
+- **Importance**: Databases are crucial for storing, retrieving, and managing data in modern computing environments.
+- **Brief History**: SQL has evolved from early data management systems to become the standard language for relational databases.
 
 ## Flat-file Databases
-- Definition of flat-file databases
-- Characteristics of flat-file databases:
-  - Single table structure
-  - No relationships between data elements
-  - Often stored as text files (e.g., CSV, TSV)
-- Advantages of flat-file databases:
-  - Simplicity
-  - Easy to understand and create
-  - Suitable for small datasets
-- Limitations of flat-file databases:
-  - Data redundancy
-  - Difficulty in representing complex relationships
-  - Limited scalability
-- Examples of flat-file database usage
-- Transition from flat-file to more complex database systems
+- **Definition**: Databases with a single table structure, lacking relationships between data elements.
+- **Characteristics**:
+  - Often stored as text files, such as CSV (Comma-Separated Values) or TSV (Tab-Separated Values).
+  - Simplicity and ease of use for small-scale data management.
+- **Advantages**:
+  - Straightforward setup and understanding.
+  - Ideal for small datasets where complex queries and relationships are unnecessary.
+- **Limitations**:
+  - Data redundancy: Duplication of data leads to inefficiency.
+  - Limited ability to represent complex relationships.
+  - Scalability issues as data grows.
+- **Examples**: Used in simple applications where relational databases are not required.
+- **Transition**: Moving to relational databases allows for better management of complex relationships and larger datasets.
 
 ## Relational Databases
-- Introduction to relational database management systems (RDBMS)
-- Key concepts of relational databases:
-  - Tables (relations)
-  - Rows (tuples or records)
-  - Columns (attributes or fields)
-- Advantages of relational databases:
-  - Efficient data storage and retrieval
-  - Support for complex queries
-  - Data integrity and consistency
-  - Scalability
-- Popular relational database management systems:
-  - MySQL
-  - PostgreSQL
-  - SQLite
-  - Oracle
-  - Microsoft SQL Server
-- Basic principles of database design:
-  - Normalization
-  - Relationships between tables (one-to-one, one-to-many, many-to-many)
+- **Introduction**: Relational Database Management Systems (RDBMS) use tables to represent data and relationships.
+- **Key Concepts**:
+  - **Tables (Relations)**: Structures that hold data in rows and columns.
+  - **Rows (Tuples or Records)**: Individual entries within a table.
+  - **Columns (Attributes or Fields)**: Define the type of data stored in each column of a table.
+- **Advantages**:
+  - **Efficient Data Storage and Retrieval**: Optimized for querying and managing data.
+  - **Complex Queries**: Support for joining tables and querying across multiple tables.
+  - **Data Integrity and Consistency**: Enforced through constraints and relationships.
+  - **Scalability**: Can handle large volumes of data and complex queries.
+- **Popular RDBMS**:
+  - **MySQL**: Widely used open-source database.
+  - **PostgreSQL**: Advanced open-source database with extensive features.
+  - **SQLite**: Lightweight, serverless database.
+  - **Oracle**: Enterprise-level database with robust features.
+  - **Microsoft SQL Server**: A comprehensive database system from Microsoft.
+- **Basic Principles of Database Design**:
+  - **Normalization**: Process of organizing data to reduce redundancy and improve data integrity.
+  - **Relationships**: Defines how tables interact (one-to-one, one-to-many, many-to-many).
 
 ## Shows
-- Example database scenario using TV shows or movies
-- Demonstration of how to structure data about shows in a relational database
+- **Example Database Scenario**: Structure of a database for managing TV shows or movies.
+- **Data Structuring**: Includes tables for shows, episodes, actors, and genres with appropriate relationships.
 
 ## Schema
-- Definition of database schema
-- Components of a schema:
-  - Table definitions
-  - Column specifications
-  - Constraints
-  - Relationships between tables
-- Importance of proper schema design
-- Examples of schema creation in SQL:
-  - CREATE TABLE statements
-  - ALTER TABLE for modifying existing schemas
-- Best practices for schema design:
-  - Choosing appropriate names for tables and columns
-  - Defining relationships clearly
-  - Planning for future scalability
+- **Definition**: Blueprint of a database that outlines how data is organized.
+- **Components**:
+  - **Table Definitions**: Specifications of each table's structure.
+  - **Column Specifications**: Details of each column, including data types and constraints.
+  - **Constraints**: Rules to maintain data integrity (e.g., primary keys, foreign keys).
+  - **Relationships**: How tables are connected.
+- **Importance**: A well-designed schema is crucial for efficient data management and integrity.
+- **Examples**:
+  - **CREATE TABLE Statements**: Defines new tables.
+  - **ALTER TABLE**: Modifies existing tables (e.g., adding new columns).
+- **Best Practices**:
+  - Use clear and descriptive names for tables and columns.
+  - Define relationships clearly to maintain data integrity.
+  - Plan for scalability to accommodate future growth.
 
 ## Data Types and Constraints
-- Common SQL data types:
-  - INTEGER, BIGINT
-  - FLOAT, DOUBLE, DECIMAL
-  - CHAR, VARCHAR, TEXT
-  - DATE, TIME, DATETIME, TIMESTAMP
-  - BOOLEAN
-  - BLOB (Binary Large Object)
-- Constraints in SQL:
-  - NOT NULL
-  - UNIQUE
-  - CHECK
-  - DEFAULT
-- Importance of choosing appropriate data types and constraints
-- Examples of defining data types and constraints in CREATE TABLE statements
+- **Common SQL Data Types**:
+  - **INTEGER, BIGINT**: Numeric types for whole numbers.
+  - **FLOAT, DOUBLE, DECIMAL**: Numeric types for floating-point numbers.
+  - **CHAR, VARCHAR, TEXT**: Types for text data of varying lengths.
+  - **DATE, TIME, DATETIME, TIMESTAMP**: Types for date and time data.
+  - **BOOLEAN**: Type for true/false values.
+  - **BLOB**: Binary Large Object for storing binary data.
+- **Constraints**:
+  - **NOT NULL**: Ensures a column cannot have NULL values.
+  - **UNIQUE**: Ensures all values in a column are unique.
+  - **CHECK**: Defines a condition that must be met for data validity.
+  - **DEFAULT**: Provides a default value for a column when no value is specified.
+- **Importance**: Selecting appropriate data types and constraints is essential for accurate data representation and integrity.
+- **Examples**: Defining data types and constraints in CREATE TABLE statements.
 
 ## Primary and Foreign Keys
-- Definition and purpose of primary keys
-  - Uniquely identifying records in a table
-  - Ensuring data integrity
-- Characteristics of good primary keys
-- Auto-incrementing primary keys
-- Foreign keys and their role in establishing relationships between tables
-- Referential integrity and its importance
-- Examples of defining primary and foreign keys in SQL
+- **Primary Keys**:
+  - **Definition**: A unique identifier for each record in a table.
+  - **Purpose**: Ensures each record is unique and facilitates efficient querying.
+- **Characteristics**:
+  - Should be unique and not NULL.
+  - Auto-incrementing primary keys are often used for simplicity.
+- **Foreign Keys**:
+  - **Role**: Establishes relationships between tables.
+  - **Referential Integrity**: Ensures that relationships between tables are maintained correctly.
+- **Examples**: Defining primary and foreign keys in SQL to establish and enforce relationships.
 
 ## Querying
-- Introduction to SQL queries
-- Basic query structure: SELECT, FROM, WHERE
-- Retrieving data from single tables
-- Joining tables:
-  - INNER JOIN
-  - LEFT JOIN
-  - RIGHT JOIN
-  - FULL OUTER JOIN
-- Filtering data with WHERE clause
-- Sorting results with ORDER BY
-- Grouping data with GROUP BY
-- Aggregate functions:
-  - COUNT()
-  - SUM()
-  - AVG()
-  - MIN()
-  - MAX()
-- Subqueries and nested queries
-- Complex query examples and best practices
+- **Introduction**: Using SQL to retrieve and manipulate data in a database.
+- **Basic Query Structure**:
+  - **SELECT**: Specifies the columns to retrieve.
+  - **FROM**: Indicates the table(s) from which to retrieve data.
+  - **WHERE**: Filters results based on specified conditions.
+- **Retrieving Data**: Basic SELECT queries from single tables.
+- **Joining Tables**:
+  - **INNER JOIN**: Retrieves records with matching values in both tables.
+  - **LEFT JOIN**: Retrieves all records from the left table, and matched records from the right table.
+  - **RIGHT JOIN**: Retrieves all records from the right table, and matched records from the left table.
+  - **FULL OUTER JOIN**: Retrieves all records when there is a match in one of the tables.
+- **Filtering Data**: Using the WHERE clause to specify conditions.
+- **Sorting Results**: Using ORDER BY to sort data.
+- **Grouping Data**: Using GROUP BY to aggregate data based on specified columns.
+- **Aggregate Functions**:
+  - **COUNT()**: Counts the number of rows.
+  - **SUM()**: Calculates the total sum of a numeric column.
+  - **AVG()**: Calculates the average value of a numeric column.
+  - **MIN()**: Finds the minimum value in a column.
+  - **MAX()**: Finds the maximum value in a column.
+- **Subqueries and Nested Queries**: Queries within queries for more complex data retrieval.
+- **Complex Query Examples**: Advanced SQL queries and best practices for efficient data manipulation.
 
 ## Indexes
-- Purpose and benefits of database indexes
-- How indexes improve query performance
-- Types of indexes:
-  - B-tree indexes
-  - Hash indexes
-  - Full-text indexes
-- Creating indexes in SQL:
-  - CREATE INDEX statement
-- When to use indexes (and when not to)
-- Impact of indexes on insert, update, and delete operations
-- Best practices for index design and management
+- **Purpose and Benefits**: Improve performance of data retrieval operations.
+- **Types of Indexes**:
+  - **B-tree Indexes**: Balanced tree structures for efficient querying.
+  - **Hash Indexes**: Fast lookups using hash tables.
+  - **Full-text Indexes**: Optimized for searching large text fields.
+- **Creating Indexes**: Using the CREATE INDEX statement to define indexes.
+- **When to Use Indexes**: Benefits and considerations for choosing when to index.
+- **Impact**: On insert, update, and delete operations.
+- **Best Practices**:
+  - Design indexes to support common query patterns.
+  - Avoid over-indexing, which can impact performance.
 
 ## Python and SQL
-- Integrating SQL databases with Python applications
-- Popular Python libraries for database interaction:
-  - sqlite3 for SQLite databases
-  - mysql-connector-python for MySQL
-  - psycopg2 for PostgreSQL
-- Basic steps for connecting to a database from Python
-- Executing SQL queries in Python
-- Handling query results
-- Using parameterized queries to prevent SQL injection
-- Example Python script demonstrating database operations
+- **Integrating SQL with Python**:
+  - **Libraries**:
+    - **sqlite3**: For SQLite databases.
+    - **mysql-connector-python**: For MySQL databases.
+    - **psycopg2**: For PostgreSQL databases.
+- **Basic Steps**:
+  - **Connecting**: Establishing a connection to the database.
+  - **Executing Queries**: Running SQL commands from Python.
+  - **Handling Results**: Processing query results.
+  - **Parameterized Queries**: Using placeholders to prevent SQL injection.
+- **Example**: Python script for basic database operations.
 
 ## Race Conditions
-- Definition of race conditions in database operations
-- Scenarios where race conditions can occur
-- Consequences of race conditions:
-  - Data inconsistency
-  - Lost updates
-- Preventing race conditions:
-  - Transactions
-  - Locking mechanisms (pessimistic vs. optimistic locking)
-  - ACID properties (Atomicity, Consistency, Isolation, Durability)
-- Examples of implementing safeguards against race conditions in SQL and application code
+- **Definition**: Occur when multiple database operations conflict, leading to unpredictable results.
+- **Scenarios**: Where race conditions might occur, such as concurrent transactions.
+- **Consequences**:
+  - **Data Inconsistency**: Conflicting changes lead to inconsistent data.
+  - **Lost Updates**: Some updates may be overwritten.
+- **Preventing Race Conditions**:
+  - **Transactions**: Grouping operations to ensure atomicity.
+  - **Locking Mechanisms**: Using locks to manage concurrent access (pessimistic vs. optimistic).
+  - **ACID Properties**: Ensuring transactions are Atomic, Consistent, Isolated, and Durable.
+- **Examples**: Implementing safeguards against race conditions.
 
-## SQL injection attacks
-- Definition and explanation of SQL injection attacks
-- How SQL injection vulnerabilities occur
-- Examples of SQL injection attacks
-- Consequences of successful SQL injection attacks:
-  - Unauthorized data access
-  - Data manipulation or destruction
-  - Bypassing authentication
-- Preventing SQL injection:
-  - Use of parameterized queries
-  - Input validation and sanitization
-  - Principle of least privilege for database users
-  - Regular security audits and updates
-- Best practices for writing secure SQL code
-- Importance of ongoing education and awareness about security threats
+## SQL Injection Attacks
+- **Definition**: SQL injection is a vulnerability where attackers manipulate a query by injecting malicious SQL code.
+  
+### How SQL Injection Vulnerabilities Occur:
+- **Unsanitized Input**: Allowing user inputs in queries without validation or escaping.
+- **Dynamic SQL Queries**: Constructing queries by concatenating strings, leading to code injection.
+
+### Consequences of SQL Injection:
+- **Unauthorized Access**: Attackers can gain access to sensitive data.
+- **Data Manipulation**: Inserting, updating, or deleting records.
+- **Authentication Bypass**: Gaining access without proper credentials.
+- **Destruction of Data**: Deleting or corrupting important data.
+
+### Preventing SQL Injection:
+- **Parameterized Queries**: Using placeholders for input values.
+- **Stored Procedures**: Predefined SQL code with fixed structure.
+- **Input Validation and Sanitization**: Ensuring all input data is clean.
+- **Principle of Least Privilege**: Minimizing access rights for database users.
+- **Security Audits and Updates**: Regularly checking for vulnerabilities and updating software.
+
+### Best Practices for Secure SQL Code:
+- Avoid constructing SQL queries using string concatenation.
+- Use prepared statements and parameterized queries in all cases.
+- Implement thorough input validation for all user data.
+- Conduct regular penetration testing to identify potential injection points.
+- Continuously educate developers on secure coding practices and threats.
 
 ## Begin Transactions, Rollback, Commit
-- Transactions in SQL: a sequence of database operations treated as a single unit of work
-- BEGIN TRANSACTION: a way to start a new database transaction
-  - Example: BEGIN TRANSACTION;
-- ROLLBACK: a way to undo the changes made to the database within a transaction
-  - Used when errors occur or when changes are not desired
-  - Example: ROLLBACK;
-- COMMIT: a way to save the changes made to the database within a transaction
-  - Permanently applies all changes made during the transaction
-  - Example: COMMIT;
-- Benefits of using transactions:
-  - Ensures data integrity by treating multiple operations as a single unit
-  - Provides a safer way to make changes to the database
-  - Allows for easy recovery from errors or mistakes
-- Use case scenario:
-  - Begin a transaction before making multiple related changes
-  - If a mistake is made, use ROLLBACK to revert to the previous state
-  - If all operations are successful, use COMMIT to save the changes
-- Importance in preventing data loss:
-  - Protects against partial updates in case of system failures
-  - Allows for careful review of changes before committing
-  - Helps maintain database consistency in multi-user environments
-- Best practices:
-  - Keep transactions as short as possible to reduce lock contention
-  - Always include error handling to manage potential ROLLBACK scenarios
-  - Use transactions for operations that must be completed together
+- **Transactions in SQL**: A transaction is a sequence of database operations that are executed as a single unit, ensuring data integrity and consistency.
+
+### Key Commands:
+- **BEGIN TRANSACTION**: Initiates a new transaction. All subsequent operations are part of this transaction until it is either committed or rolled back.
+- **ROLLBACK**: Reverts the database to the state before the transaction started, discarding all operations within the transaction.
+- **COMMIT**: Permanently applies all changes made during the transaction to the database.
+
+### Benefits of Transactions:
+- **Atomicity**: Ensures that all operations within a transaction are completed successfully or none at all.
+- **Consistency**: Ensures the database remains in a valid state before and after the transaction.
+- **Isolation**: Prevents other operations from seeing intermediate states during the transaction.
+- **Durability**: Guarantees that committed changes are saved even if the system crashes.
+
+### Use Cases:
+- **Data Integrity**: For operations involving multiple tables, a transaction ensures that all related changes are applied consistently.
+- **Error Recovery**: If an error occurs during a transaction, rolling back undoes all changes, avoiding partial updates.
+- **Multi-Step Operations**: For complex operations like transferring funds between bank accounts, transactions ensure that both debit and credit operations are applied or neither.
+
+### Best Practices:
+- **Keep Transactions Short**: Minimize the time a transaction is open to reduce the likelihood of contention and deadlocks.
+- **Error Handling**: Always include error handling mechanisms to manage potential rollback scenarios.
+- **Use for Critical Operations**: Employ transactions when operations must be completed together, such as financial transfers or inventory updates.

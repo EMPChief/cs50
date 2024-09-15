@@ -1,11 +1,12 @@
 {% extends "layout.html" %}<!--  -->
 
 {% block title %}<!--  -->
-Log In {% endblock %}<!--  -->
+Register<!--  -->
+{% endblock %}<!--  -->
 
 {% block main %}
-<!-- Skjema for innlogging -->
-<form action="/login" method="post">
+<!-- Skjema for registrering av ny bruker -->
+<form action="/register" method="post">
   <div class="mb-3">
     <!-- Input-felt for brukernavn -->
     <input
@@ -28,7 +29,17 @@ Log In {% endblock %}<!--  -->
       type="password"
     />
   </div>
-  <!-- Logg inn-knapp -->
-  <button class="btn btn-primary" type="submit">Log In</button>
+  <div class="mb-3">
+    <!-- Input-felt for å bekrefte passordet -->
+    <input
+      class="form-control mx-auto w-auto"
+      id="confirmation"
+      name="confirmation"
+      placeholder="Password (again)"
+      type="password"
+    />
+  </div>
+  <!-- Knapp for å sende inn registreringsskjemaet -->
+  <button class="btn btn-primary" type="submit">Register</button>
 </form>
-{% endblock %}<!--  -->
+{% endblock %}

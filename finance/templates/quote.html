@@ -1,0 +1,25 @@
+{% extends "layout.html" %}<!--  -->
+
+{% block title %}<!--  -->
+Quote<!--  -->
+{% endblock %}<!--  -->
+
+{% block main %}
+<!-- Skjema for å hente aksjekurs -->
+<form action="/quote" method="post">
+  <div class="mb-3">
+    <!-- Input-felt for aksjesymbol -->
+    <input
+      autocomplete="off"
+      autofocus
+      class="form-control mx-auto w-auto"
+      id="symbol"
+      name="symbol"
+      placeholder="Symbol"
+      type="text"
+    />
+  </div>
+  <!-- Knapp for å sende inn skjemaet og hente aksjekurs -->
+  <button class="btn btn-primary" type="submit">Quote</button>
+</form>
+{% endblock %}

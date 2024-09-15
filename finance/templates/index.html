@@ -1,0 +1,54 @@
+{% extends "layout.html" %}<!--  -->
+
+{% block title %}<!--  -->
+Portfolio<!--  -->
+{% endblock %}<!--  -->
+
+{% block main %}
+<!-- Tabellen viser aksjeporteføljen til brukeren -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <!-- Kolonneoverskrifter for tabellen -->
+      <th class="text-start">Symbol</th>
+      <th class="text-start">Name</th>
+      <th class="text-end">Shares</th>
+      <th class="text-end">Price</th>
+      <th class="text-end">TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Går gjennom alle aksjene i brukerens portefølje -->
+    {% for share in user_portfolio %}
+    <tr>
+      <!-- Viser aksjesymbolet -->
+      <td class="text-start">{{ share["symbol"] }}</td>
+      <!-- Viser aksjens navn -->
+      <td class="text-start">{{ share["name"] }}</td>
+      <!-- Viser antall aksjer -->
+      <td class="text-end">{{ share["SUM(shares)"] }}</td>
+      <!-- Viser aksjens nåværende pris -->
+      <td class="text-end">{{ share["currentprice"] | usd }}</td>
+      <!-- Viser totalpris for aksjene (antall aksjer * pris) -->
+      <td class="text-end">{{ "%.2f"|format(share["totalprice"]) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <!-- Rad for å vise kontanter -->
+    <tr>
+      <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+      <td class="border-0 text-end">
+        {{ "%.2f"|format(user_cash[0]["cash"]) }}
+      </td>
+    </tr>
+    <!-- Rad for å vise totalverdien (kontanter + nåverdi av portefølje) -->
+    <tr>
+      <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+      <td class="border-0 fw-bold text-end">
+        {{ "%.2f"|format(user_cash[0]["cash"] + current_worth) }}
+      </td>
+    </tr>
+  </tfoot>
+</table>
+{% endblock %}

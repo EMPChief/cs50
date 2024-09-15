@@ -1,0 +1,38 @@
+{% extends "layout.html" %}<!--  -->
+
+{% block title %}<!--  -->
+Withdraw<!--  -->
+{% endblock %}<!--  -->
+
+{% block main %}
+<!-- Skjema for uttak av midler -->
+<form action="/withdraw" method="post">
+  <div class="mb-3">
+    <!-- Merke for uttak av midler -->
+    <label class="mb-3 fw-bold" for="buy">Withdraw Funds</label>
+    <!-- Input-felt for å bekrefte passord -->
+    <input
+      class="form-control mx-auto w-auto mb-3"
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Confirm Password"
+      minlength="1"
+      required
+    />
+    <!-- Input-felt for å angi beløp som skal tas ut -->
+    <input
+      class="form-control mx-auto w-auto mb-3"
+      type="number"
+      id="sum"
+      name="sum"
+      placeholder="Amount ($)"
+      min="10"
+      step="10"
+      required
+    />
+    <!-- Knapp for å sende inn skjemaet og gjennomføre uttaket -->
+    <button class="btn btn-primary btn-sm" type="submit">Withdraw</button>
+  </div>
+</form>
+{% endblock %}
