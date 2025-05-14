@@ -1,80 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link href="/static/styles.css" rel="stylesheet" />
-    <title>Edit Birthday</title>
-  </head>
-  <body>
-    <!-- Overskrift-seksjon med tittel på siden -->
-    <header>
-      <h1><i class="fas fa-birthday-cake"></i> Edit Birthday</h1>
-    </header>
+{% extends "base.html" %}<!---->
 
-    <!-- Hovedcontainer for innholdet på siden -->
-    <main class="container">
-      <!-- Seksjon for å redigere bursdag -->
-      <section class="edit-birthday">
-        <h2>Edit Birthday</h2>
-        <!-- Skjema for å redigere bursdag -->
-        <form method="post" action="/edit/{{ birthday.id }}">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">First Name</label>
-              <!-- Inputfelt for fornavn, forhåndsutfylt med eksisterende verdi -->
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value="{{ birthday.name }}"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="lastname">Last Name</label>
-              <!-- Inputfelt for etternavn, forhåndsutfylt med eksisterende verdi -->
-              <input
-                type="text"
-                name="lastname"
-                id="lastname"
-                value="{{ birthday.lastname }}"
-                required
-              />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="birthday">Birthday</label>
-              <!-- Inputfelt for bursdagsdato, forhåndsutfylt med eksisterende verdi -->
-              <input
-                type="date"
-                name="birthday"
-                id="birthday"
-                value="{{ birthday.year }}-{{ '%02d' % birthday.month }}-{{ '%02d' % birthday.day }}"
-                required
-              />
-            </div>
-          </div>
-          <!-- Send inn-skjema knapp -->
-          <button type="submit" class="btn-submit">
-            <i class="fas fa-save"></i> Save Changes
-          </button>
-        </form>
-      </section>
-    </main>
+{% block title %}Edit Birthday{% endblock %}<!---->
 
-    <!-- Bunntekst -->
-    <footer>
-      <p>&copy; 2024 Birthday Tracker. All rights reserved.</p>
-    </footer>
-  </body>
-</html>
+{% block content %}<!---->
+<!-- Edit Birthday Form -->
+<section class="edit-birthday">
+  <h2>Edit Birthday</h2>
+  <form method="post" action="/edit/{{ birthday.id }}">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        value="{{ birthday.name }}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        name="lastname"
+        id="lastname"
+        value="{{ birthday.lastname }}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="birthday">Birthday</label>
+      <input
+        type="date"
+        name="birthday"
+        id="birthday"
+        value="{{ '%04d-%02d-%02d' | format(birthday.year, birthday.month, birthday.day) }}"
+        required
+      />
+    </div>
+    <button type="submit" class="btn-submit">Save Changes</button>
+    <a href="{{ url_for('index') }}" class="btn-cancel">Cancel</a>
+  </form>
+</section>
+{% endblock %}

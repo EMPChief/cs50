@@ -1,108 +1,141 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Kalkulatorfunksjonalitet
-    // Håndterer klikk på "add" knappen for addisjon
-    document.getElementById('add').addEventListener('click', function() {
-        // Henter verdiene fra inputfeltene og konverterer dem til flyttall
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        // Beregner summen av de to tallene
-        const result = num1 + num2;
-        // Viser resultatet i elementet med id 'result'
-        document.getElementById('result').textContent = 'Resultat: ' + result.toFixed(2);
-    });
+    // Utility function to validate number input
+    function validateNumber(value) {
+        const num = parseFloat(value);
+        return !isNaN(num) && isFinite(num);
+    }
 
-    // Håndterer klikk på "subtract" knappen for subtraksjon
-    document.getElementById('subtract').addEventListener('click', function() {
-        // Henter verdiene fra inputfeltene og konverterer dem til flyttall
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        // Beregner differansen mellom de to tallene
-        const result = num1 - num2;
-        // Viser resultatet i elementet med id 'result'
-        document.getElementById('result').textContent = 'Resultat: ' + result.toFixed(2);
-    });
+    // Utility function to format result
+    function formatResult(value) {
+        return typeof value === 'number' ? value.toFixed(2) : value;
+    }
 
-    // Håndterer klikk på "multiply" knappen for multiplikasjon
-    document.getElementById('multiply').addEventListener('click', function() {
-        // Henter verdiene fra inputfeltene og konverterer dem til flyttall
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        // Beregner produktet av de to tallene
-        const result = num1 * num2;
-        // Viser resultatet i elementet med id 'result'
-        document.getElementById('result').textContent = 'Resultat: ' + result.toFixed(2);
-    });
+    // Utility function to animate result change
+    function animateResult(element, value) {
+        element.style.transform = 'scale(1.1)';
+        element.style.color = '#0d6efd';
+        element.textContent = value;
+        
+        setTimeout(() => {
+            element.style.transform = 'scale(1)';
+            element.style.color = '';
+        }, 200);
+    }
 
-    // Håndterer klikk på "divide" knappen for divisjon
-    document.getElementById('divide').addEventListener('click', function() {
-        // Henter verdiene fra inputfeltene og konverterer dem til flyttall
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        // Sjekker om divisor (num2) er ulik null for å unngå deling med null
-        if (num2 !== 0) {
-            // Beregner kvotienten av de to tallene
-            const result = num1 / num2;
-            // Viser resultatet i elementet med id 'result'
-            document.getElementById('result').textContent = 'Resultat: ' + result.toFixed(2);
-        } else {
-            // Viser feilmelding hvis divisor er null
-            document.getElementById('result').textContent = 'Feil: Divisjon med null';
+    // Calculator functionality
+    const calculatorOperations = {
+        add: (a, b) => a + b,
+        subtract: (a, b) => a - b,
+        multiply: (a, b) => a * b,
+        divide: (a, b) => b !== 0 ? a / b : 'Cannot divide by zero'
+    };
+
+    function performCalculation(operation) {
+        const num1 = document.getElementById('num1').value;
+        const num2 = document.getElementById('num2').value;
+        const resultElement = document.getElementById('result');
+
+        if (!validateNumber(num1) || !validateNumber(num2)) {
+            animateResult(resultElement, 'Please enter valid numbers');
+            return;
         }
-    });
 
-    // Øke/Redusere funksjonalitet
-    let count = 0; // Initialiserer tellevariabelen
+        const result = calculatorOperations[operation](parseFloat(num1), parseFloat(num2));
+        animateResult(resultElement, formatResult(result));
+    }
 
-    // Håndterer klikk på "increment" knappen for å øke tellevariabelen
-    document.getElementById('increment').addEventListener('click', function() {
-        count++; // Øker tellevariabelen med 1
-        // Oppdaterer visningen av tellevariabelen i elementet med id 'count'
-        document.getElementById('count').textContent = count;
-    });
+    // Add event listeners for calculator buttons
+    document.getElementById('add').addEventListener('click', () => performCalculation('add'));
+    document.getElementById('subtract').addEventListener('click', () => performCalculation('subtract'));
+    document.getElementById('multiply').addEventListener('click', () => performCalculation('multiply'));
+    document.getElementById('divide').addEventListener('click', () => performCalculation('divide'));
 
-    // Håndterer klikk på "decrement" knappen for å redusere tellevariabelen
-    document.getElementById('decrement').addEventListener('click', function() {
-        count--; // Reduserer tellevariabelen med 1
-        // Oppdaterer visningen av tellevariabelen i elementet med id 'count'
-        document.getElementById('count').textContent = count;
-    });
+    // Counter functionality with animation
+    let count = 0;
+    const countElement = document.getElementById('count');
 
-    // Temperaturkonverterer funksjonalitet
-    // Håndterer klikk på "convertTemp" knappen for temperaturkonvertering
-    document.getElementById('convertTemp').addEventListener('click', function() {
-        // Henter hvilken temperatur enhet vi konverterer fra og til
-        const tempFrom = document.getElementById('tempFrom').value;
-        const tempTo = document.getElementById('tempTo').value;
-        // Henter verdien fra inputfeltet for temperatur å konvertere
-        const valueFrom = parseFloat(document.getElementById('tempFromValue').value);
+    function updateCount(increment) {
+        count += increment;
+        countElement.style.transform = 'scale(1.2)';
+        countElement.style.color = increment > 0 ? '#198754' : '#dc3545';
+        countElement.textContent = count;
+        
+        setTimeout(() => {
+            countElement.style.transform = 'scale(1)';
+            countElement.style.color = '';
+        }, 200);
+    }
+
+    document.getElementById('increment').addEventListener('click', () => updateCount(1));
+    document.getElementById('decrement').addEventListener('click', () => updateCount(-1));
+
+    // Temperature converter functionality
+    const tempConversions = {
+        celsiusToFahrenheit: (celsius) => (celsius * 9/5) + 32,
+        fahrenheitToCelsius: (fahrenheit) => (fahrenheit - 32) * 5/9
+    };
+
+    function convertTemperature() {
+        const fromUnit = document.getElementById('tempFrom').value;
+        const toUnit = document.getElementById('tempTo').value;
+        const fromValue = document.getElementById('tempFromValue').value;
+        const toElement = document.getElementById('tempToValue');
+
+        if (!validateNumber(fromValue)) {
+            toElement.value = 'Invalid input';
+            return;
+        }
 
         let result;
+        const value = parseFloat(fromValue);
 
-        // Konverterer temperatur basert på valgt enhet
-        switch(tempFrom) {
-            case 'celsius':
-                switch(tempTo) {
-                    case 'celsius':
-                        result = valueFrom; // Ingen konvertering hvis begge enheter er Celsius
-                        break;
-                    case 'fahrenheit':
-                        result = (valueFrom * 9/5) + 32; // Konverterer Celsius til Fahrenheit
-                        break;
-                }
-                break;
-            case 'fahrenheit':
-                switch(tempTo) {
-                    case 'celsius':
-                        result = (valueFrom - 32) * 5/9; // Konverterer Fahrenheit til Celsius
-                        break;
-                    case 'fahrenheit':
-                        result = valueFrom; // Ingen konvertering hvis begge enheter er Fahrenheit
-                        break;
-                }
-                break;
+        if (fromUnit === toUnit) {
+            result = value;
+        } else if (fromUnit === 'celsius' && toUnit === 'fahrenheit') {
+            result = tempConversions.celsiusToFahrenheit(value);
+        } else {
+            result = tempConversions.fahrenheitToCelsius(value);
         }
 
-        // Viser det konverterte resultatet i inputfeltet for den nye temperaturen
-        document.getElementById('tempToValue').value = result.toFixed(2);
+        toElement.value = formatResult(result);
+        toElement.style.backgroundColor = '#e8f0fe';
+        
+        setTimeout(() => {
+            toElement.style.backgroundColor = '';
+        }, 300);
+    }
+
+    document.getElementById('convertTemp').addEventListener('click', convertTemperature);
+
+    // Add input validation and auto-conversion for temperature inputs
+    document.getElementById('tempFromValue').addEventListener('input', function(e) {
+        if (this.value && validateNumber(this.value)) {
+            convertTemperature();
+        }
+    });
+
+    // Add unit swap functionality
+    document.querySelector('.bi-arrow-down-up').addEventListener('click', function() {
+        const fromSelect = document.getElementById('tempFrom');
+        const toSelect = document.getElementById('tempTo');
+        const fromValue = document.getElementById('tempFromValue').value;
+        const toValue = document.getElementById('tempToValue').value;
+
+        // Swap units
+        const tempUnit = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = tempUnit;
+
+        // Swap values if they exist and are valid
+        if (validateNumber(fromValue) && validateNumber(toValue)) {
+            document.getElementById('tempFromValue').value = toValue;
+            convertTemperature();
+        }
+
+        // Animate the swap icon
+        this.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 300);
     });
 });

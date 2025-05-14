@@ -3,134 +3,284 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume | Modern Design</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    />
+    <meta name="description" content="Professional resume and portfolio showcasing CS50 projects and skills" />
+    <meta name="keywords" content="CS50, resume, portfolio, programming skills" />
+    <meta name="author" content="Bjørn-Magne" />
+    <title>Resume | CS50 Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="https://cs50.harvard.edu/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
     <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container-fluid">
-      <!-- Hovedoverskrift og navigasjonslinje -->
-      <header
-        class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-5"
-      >
-        <div class="container text-center">
-          <h1 class="display-4 fw-bold mb-4">My Resume</h1>
-          <p class="lead">Experience, Skills, and Achievements</p>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-code-slash"></i> CS50 Portfolio
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javaplay.html">JavaPlay</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="resume.html">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-sm btn-outline-light ms-2" id="darkModeToggle">
+                <i class="bi bi-moon-stars"></i>
+              </button>
+            </li>
+          </ul>
         </div>
-      </header>
+      </div>
+    </nav>
 
-      <!-- Navigasjonsmeny -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">Home</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javaplay.html">JavaPlay</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="resume.html">Resume</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold mb-4 animate-up">Resume & Portfolio</h1>
+        <p class="lead mb-5 animate-up-delay">A showcase of my journey through computer science and development</p>
+      </div>
+    </header>
 
-      <!-- Hovedinnhold med erfaring, utdanning og ferdigheter -->
-      <main class="bg-white py-5">
-        <div class="container">
-          <div class="row">
-            <!-- Seksjon for profesjonell erfaring -->
-            <div class="col-md-8">
-              <h2 class="mb-4">Professional Experience</h2>
-              <div class="card shadow-sm">
+    <!-- Main Content -->
+    <main class="py-5">
+      <div class="container">
+        <!-- Profile Section -->
+        <section class="mb-5">
+          <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+              <div class="card profile-card">
                 <div class="card-body">
-                  <h3 class="card-title">Software Developer</h3>
-                  <p class="card-text">Self | Home | 2 weeks</p>
-                  <ul class="list-unstyled mb-0">
-                    <li>Project 1: Made a snake game</li>
-                    <li>Project 2: Made a note app using flask</li>
-                  </ul>
-                </div>
-              </div>
-
-              <h2 class="mt-4 mb-4">Education</h2>
-              <div class="card shadow-sm">
-                <div class="card-body">
-                  <h3 class="card-title">Chef</h3>
-                  <p class="card-text">Fitjar VGS | 2018</p>
+                  <img
+                    src="https://avatars.githubusercontent.com/u/97165289?v=4"
+                    alt="Profile"
+                    class="rounded-circle mb-4"
+                    style="width: 150px; height: 150px; object-fit: cover;"
+                  />
+                  <h3>Bjørn-Magne Kristensen</h3>
+                  <p class="text-muted">Aspiring Software Developer</p>
+                  <div class="social-links mt-3">
+                    <a href="https://github.com" class="btn btn-outline-primary btn-social mx-1">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" class="btn btn-outline-primary btn-social mx-1">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Seksjon for ferdigheter -->
-            <div class="col-md-4">
-              <h2 class="mb-4">Skills</h2>
-              <div class="card shadow-sm">
+            <div class="col-md-8">
+              <div class="card">
                 <div class="card-body">
-                  <div
-                    class="d-flex flex-column align-items-center text-center"
-                  >
-                    <img
-                      src="https://via.placeholder.com/100x100"
-                      alt="Avatar"
-                      class="rounded-circle mt-4"
-                      style="width: 80px"
-                    />
-                    <div class="w-75 mt-3">
-                      <p class="text-muted font-weight-light mb-4">
-                        Technical Skills
-                      </p>
-                      <ul class="list-unstyled mb-0">
-                        <li>HTML/CSS</li>
-                        <li>JavaScript</li>
-                        <li>C</li>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>SQL</li>
-                      </ul>
+                  <h2 class="card-title mb-4">About Me</h2>
+                  <p class="card-text">
+                    I am a passionate learner currently exploring the world of computer science through Harvard's CS50 course.
+                    With a background in culinary arts and a growing expertise in programming, I bring a unique perspective
+                    to problem-solving and creative development.
+                  </p>
+                  <div class="mt-4">
+                    <h5><i class="bi bi-envelope-fill me-2"></i>bjornmagnekristensen1999@gmail.com</h5>
+                    <h5><i class="bi bi-geo-alt-fill me-2"></i>Norway</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CS50 Projects Section -->
+        <section class="mb-5">
+          <h2 class="text-center mb-4">CS50 Projects</h2>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-code-square text-primary me-3 h2 mb-0"></i>
+                    <h3 class="card-title mb-0">Week 1-5: C Programming</h3>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Mario: Pyramid builder in C</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Credit: Credit card validator</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Readability: Text analysis tool</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Plurality: Vote counting system</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Speller: Dictionary implementation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-filetype-py text-primary me-3 h2 mb-0"></i>
+                    <h3 class="card-title mb-0">Week 6-9: Python & Web</h3>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>DNA: Sequence matching in Python</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Movies: SQL database queries</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Homepage: This portfolio website</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Finance: Stock trading platform</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Final Project: Coming soon</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="mb-5">
+          <h2 class="text-center mb-4">Technical Skills</h2>
+          <div class="row g-4">
+            <div class="col-6 col-md-3">
+              <div class="skill-item text-center">
+                <i class="bi bi-braces-asterisk display-4 text-primary"></i>
+                <h4 class="mt-3">C</h4>
+                <div class="progress mt-2">
+                  <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="skill-item text-center">
+                <i class="bi bi-filetype-py display-4 text-primary"></i>
+                <h4 class="mt-3">Python</h4>
+                <div class="progress mt-2">
+                  <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="skill-item text-center">
+                <i class="bi bi-database display-4 text-primary"></i>
+                <h4 class="mt-3">SQL</h4>
+                <div class="progress mt-2">
+                  <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="skill-item text-center">
+                <i class="bi bi-globe display-4 text-primary"></i>
+                <h4 class="mt-3">Web Dev</h4>
+                <div class="progress mt-2">
+                  <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section>
+          <h2 class="text-center mb-4">Education</h2>
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-mortarboard-fill text-primary me-3 h2 mb-0"></i>
+                    <div>
+                      <h3 class="card-title mb-1">CS50: Introduction to Computer Science</h3>
+                      <p class="text-muted mb-0">Harvard University (edX) | 2024</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-award-fill text-primary me-3 h2 mb-0"></i>
+                    <div>
+                      <h3 class="card-title mb-1">Chef Certification</h3>
+                      <p class="text-muted mb-0">Fitjar VGS | 2018</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </main>
+        </section>
+      </div>
+    </main>
 
-      <!-- Bunntekst med kontaktinformasjon -->
-      <footer class="bg-dark text-white py-4">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-6">
-              <h3>Contact Information</h3>
-              <p>Email: bjornmagnekristensen1999@gmail.com</p>
-              <p>Phone: +secret</p>
-            </div>
+    <!-- Footer -->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center text-md-start">
+            <span class="copyright">© 2024 CS50 Portfolio</span>
+          </div>
+          <div class="col-md-4 text-center">
+            <ul class="social-buttons list-inline mb-0">
+              <li class="list-inline-item">
+                <a href="https://github.com" class="btn btn-outline-light btn-social">
+                  <i class="bi bi-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://linkedin.com" class="btn btn-outline-light btn-social">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+            <a href="https://cs50.harvard.edu" class="text-white text-decoration-none">
+              Made with <i class="bi bi-heart-fill text-danger"></i> and CS50
+            </a>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Dark mode toggle
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        if (body.classList.contains('dark-mode')) {
+          icon.classList.replace('bi-moon-stars', 'bi-sun');
+        } else {
+          icon.classList.replace('bi-sun', 'bi-moon-stars');
+        }
+      });
+
+      // Navbar scroll behavior
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('navbar-scrolled');
+        } else {
+          navbar.classList.remove('navbar-scrolled');
+        }
+      });
+    </script>
   </body>
 </html>

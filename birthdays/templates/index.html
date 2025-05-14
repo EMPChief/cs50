@@ -1,111 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link href="/static/styles.css" rel="stylesheet" />
-    <title>Birthday Tracker</title>
-  </head>
-  <body>
-    <!-- Overskrift-seksjon med tittel på siden -->
-    <header>
-      <h1><i class="fas fa-birthday-cake"></i> Birthday Tracker</h1>
-    </header>
+{% extends "base.html" %}<!---->
 
-    <!-- Hovedcontainer for innholdet på siden -->
-    <main class="container">
-      <!-- Visning av flash-meldinger -->
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %}
+{% block title %}Birthday Tracker{% endblock %}<!---->
 
-      <!-- Seksjon for å legge til ny bursdag -->
-      <section class="add-birthday">
-        <h2>Add a Birthday</h2>
-        <!-- Skjema for å legge til ny bursdag med inputfelt for navn og dato -->
-        <form method="post" action="/">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">First Name</label>
-              <!-- Inputfelt for fornavn, obligatorisk -->
-              <input type="text" name="name" id="name" required />
-            </div>
-            <div class="form-group">
-              <label for="lastname">Last Name</label>
-              <!-- Inputfelt for etternavn, obligatorisk -->
-              <input type="text" name="lastname" id="lastname" required />
-            </div>
+{% block content %}<!---->
+<!-- Add Birthday Form -->
+<section class="add-birthday">
+  <h2>Add a Birthday</h2>
+  <form method="post" action="/">
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" name="lastname" id="lastname" required />
+    </div>
+    <div class="form-group">
+      <label for="birthday">Birthday</label>
+      <input type="date" name="birthday" id="birthday" required />
+    </div>
+    <button type="submit" class="btn-submit">Add Birthday</button>
+  </form>
+</section>
+
+<!-- Search Form -->
+<section class="search-birthday">
+  <h2>Search Birthdays</h2>
+  <form method="get" action="/search">
+    <div class="form-group">
+      <label for="search">Search by Name</label>
+      <input
+        type="text"
+        name="q"
+        id="search"
+        placeholder="Enter name..."
+        value="{{ query|default('') }}"
+        required
+      />
+    </div>
+    <button type="submit" class="btn-search">Search</button>
+  </form>
+</section>
+
+<!-- Birthday List -->
+<section class="birthday-list">
+  <h2>{% if query %}Search Results{% else %}All Birthdays{% endif %}</h2>
+  {% if get_birthdays %}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for birthday in get_birthdays %}
+      <tr>
+        <td data-label="Name">{{ birthday.name }} {{ birthday.lastname }}</td>
+        <td data-label="Birthday">
+          {{ '%02d' % birthday.month }}/{{ '%02d' % birthday.day }}/{{
+          birthday.year }}
+        </td>
+        <td data-label="Actions">
+          <div class="action-buttons">
+            <a href="/edit/{{ birthday.id }}" class="btn-edit">Edit</a>
+            <form
+              method="post"
+              action="/delete/{{ birthday.id }}"
+              class="inline-form"
+            >
+              <button type="submit" class="btn-delete">Delete</button>
+            </form>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="birthday">Birthday</label>
-              <!-- Inputfelt for bursdagsdato, med kalender -->
-              <input type="date" name="birthday" id="birthday" required />
-            </div>
-          </div>
-          <!-- Send inn-skjema knapp -->
-          <button type="submit" class="btn-submit">
-            <i class="fas fa-plus"></i> Add Birthday
-          </button>
-        </form>
-      </section>
-
-      <!-- Seksjon som viser alle registrerte bursdager -->
-      <section class="birthday-list">
-        <h2>All Birthdays</h2>
-        <!-- Tabell som viser alle registrerte bursdager -->
-        <table>
-          <thead>
-            <tr>
-              <!-- Kolonner for navn, bursdagsdato, og handlinger -->
-              <th>Name</th>
-              <th>Birthday</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Løkke som går gjennom alle bursdager og viser dem i tabellen -->
-            {% for birthday in get_birthdays %}
-            <tr>
-              <td>{{ birthday.name }} {{ birthday.lastname }}</td>
-              <td>
-                {{ birthday.month }}-{{ birthday.day }}-{{ birthday.year }}
-              </td>
-              <td>
-                <!-- Delete-knapp med en POST-forespørsel for å slette bursdagen -->
-                <form
-                  method="post"
-                  action="/delete/{{ birthday.id }}"
-                  style="display: inline"
-                >
-                  <button type="submit" class="btn-delete">
-                    <i class="fas fa-trash"></i> Delete
-                  </button>
-                </form>
-                <!-- Edit-knapp som leder til redigeringsside -->
-                <a href="/edit/{{ birthday.id }}" class="btn-edit">
-                  <i class="fas fa-edit"></i> Edit
-                </a>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
-    </main>
-
-    <!-- Bunntekst -->
-    <footer>
-      <p>&copy; 2024 Birthday Tracker. All rights reserved.</p>
-    </footer>
-  </body>
-</html>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No birthdays to display.</p>
+  {% endif %}
+</section>
+{% endblock %}

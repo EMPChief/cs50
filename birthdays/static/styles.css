@@ -1,191 +1,337 @@
-/* Moderne stiler for Birthday Tracker-applikasjonen */
-
+/* Define root variables for easy theming */
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #f5a623;
-  --background-color: #f4f7f9;
-  --text-color: #333;
-  --border-radius: 8px;
+  --primary-color: #4caf50;
+  --secondary-color: #ffffff;
+  --accent-color: #f44336;
+  --background-color: #f0f2f5;
+  --text-color: #333333;
+  --font-family: "Roboto", sans-serif;
 }
 
-/* Grunnleggende stiler for body */
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
+/* Reset default browser styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Container for å sentrere innhold og gi bredde */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-/* Stiler for header-seksjonen */
+/* Header styling */
 header {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--secondary-color);
+  padding: 1.5em 0;
   text-align: center;
-  padding: 2rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Stiler for overskrifter */
-h1 {
-  font-size: 2.5rem;
-  margin: 0;
+header h1 {
+  font-size: 2.5em;
+  font-weight: 700;
 }
 
-h2 {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 10px;
-  margin-top: 2rem;
+/* Main container */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2em auto;
 }
 
-/* Stiler for seksjonene med skjema og bursdagsliste */
-.add-birthday,
-.birthday-list {
-  background-color: white;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Flash messages */
+.flash-messages {
+  margin-bottom: 1em;
 }
 
-/* Stiler for skjemaet */
+.alert {
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+  border-radius: 5px;
+  animation: fadeIn 0.5s;
+  font-weight: 500;
+}
+
+.alert.success {
+  background-color: #e6f4ea;
+  border-left: 5px solid #28a745;
+}
+
+.alert.error {
+  background-color: #fcebea;
+  border-left: 5px solid #dc3545;
+}
+
+.alert.info {
+  background-color: #e8f4fa;
+  border-left: 5px solid #17a2b8;
+}
+
+/* Form styling */
 form {
-  display: flex;
-  flex-direction: column;
+  background-color: var(--secondary-color);
+  padding: 2em;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+section h2 {
+  font-size: 1.75em;
+  margin-bottom: 1em;
+  color: var(--primary-color);
 }
 
 .form-group {
-  flex: 1;
-  margin-right: 1rem;
+  margin-bottom: 1.5em;
 }
 
-.form-group:last-child {
-  margin-right: 0;
-}
-
-/* Stiler for etiketter og inputfelt */
-label {
+.form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
+  margin-bottom: 0.5em;
+  font-weight: 500;
 }
 
-input {
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="search"] {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
+  padding: 0.75em;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
-/* Spesifikke stiler for dato-input */
-input[type="date"] {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #ffffff;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  cursor: pointer;
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="search"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  color: var(--secondary-color);
-  font-size: 1.2rem;
-  cursor: pointer;
+/* Styles for the search-birthday section */
+.search-birthday {
+  margin-bottom: 2em;
 }
 
-/* Stiler for submit-knappen */
-.btn-submit {
+.search-birthday form {
   background-color: var(--secondary-color);
-  color: white;
+  padding: 2em;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-birthday h2 {
+  font-size: 1.75em;
+  margin-bottom: 1em;
+  color: var(--primary-color);
+}
+
+.search-birthday .form-group {
+  margin-bottom: 1.5em;
+}
+
+.search-birthday .form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.search-birthday .form-group input[type="text"] {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.search-birthday .form-group input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Buttons */
+button,
+.btn-submit,
+.btn-search,
+.btn-edit,
+.btn-delete,
+.btn-cancel {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  margin-top: 0.5em;
+  text-decoration: none;
+  color: #ffffff;
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  border-radius: var(--border-radius);
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
   transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-  background-color: #e09400;
+.btn-submit {
+  background-color: var(--primary-color);
 }
 
-/* Stiler for tabellen */
+.btn-submit:hover {
+  background-color: #45a049;
+}
+
+.btn-search {
+  background-color: #007bff;
+  margin-top: 0;
+}
+
+.btn-search:hover {
+  background-color: #0069d9;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: var(--accent-color);
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+.inline-form {
+  display: inline;
+}
+
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin-bottom: 2em;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-th,
-td {
+table thead {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+table th,
+table td {
+  padding: 1em;
   text-align: left;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  font-weight: 500;
 }
 
-th {
-  background-color: var(--primary-color);
-  color: white;
+table tr {
+  border-bottom: 1px solid #dddddd;
 }
 
-tr:nth-child(even) {
-  background-color: #f8f8f8;
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-/* Stiler for varselmeldinger */
-.alert {
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 1rem;
+table tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
-.alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-/* Stiler for bunntekst */
+/* Footer styling */
 footer {
-  text-align: center;
-  padding: 1rem;
   background-color: var(--primary-color);
-  color: white;
-  margin-top: 2rem;
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
 }
 
-/* Responsivt design for mindre skjermer */
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
+  .form-group {
+    width: 100%;
   }
 
-  .form-group {
-    margin-right: 0;
-    margin-bottom: 1rem;
+  .btn-submit,
+  .btn-search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.75em;
+  }
+
+  button,
+  .btn-submit,
+  .btn-search,
+  .btn-edit,
+  .btn-delete,
+  .btn-cancel {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  .inline-form {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 1em;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 1em;
+    font-weight: bold;
   }
 }
